@@ -1,9 +1,12 @@
-# [Project name]
+# Angular Starter Workspace
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+An Angular starter application with routing, strict TypeScript checks, and a live preview.
 
 ## Run & Operate
 
+- `pnpm --filter @workspace/angular-starter run dev` — run the Angular app
+- `pnpm --filter @workspace/angular-starter run build` — create a production build
+- `pnpm --filter @workspace/angular-starter run typecheck` — check Angular templates and TypeScript
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
@@ -13,7 +16,8 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Stack
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
+- pnpm workspaces, Node.js 24
+- Frontend: Angular 22, standalone components, Angular Router, TypeScript 6
 - API: Express 5
 - DB: PostgreSQL + Drizzle ORM
 - Validation: Zod (`zod/v4`), `drizzle-zod`
@@ -22,23 +26,28 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/angular-starter/src/app/` — Angular shell, routes, and example pages
+- `artifacts/angular-starter/angular.json` — Angular build and development server settings
+- `artifacts/api-server/` — shared Express API
+- `lib/api-spec/openapi.yaml` — source of truth for API contracts
+- `lib/db/src/schema/` — database schema
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The Angular app uses standalone components and Angular Router.
+- The app is a web project with a root preview route.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+The starter home page links to a workspace guide and includes a not-found route. Use it as the base for a new Angular app.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+_No project-specific preferences recorded._
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- The Angular development server uses the workflow-provided `PORT` and allows proxy hostnames for the Replit preview.
 
 ## Pointers
 

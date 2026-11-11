@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Angular Starter"
+description = "A ready-to-extend Angular workspace with routing, a live preview, and a small starter screen to confirm the app is running."
+version = "1.0.0"
+id = "artifacts/angular-starter"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20549
+
+[services.development]
+run = "pnpm --filter @workspace/angular-starter run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/angular-starter", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/angular-starter/dist/public/browser"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20549"
+BASE_PATH = "/"
