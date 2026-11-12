@@ -29,3 +29,5 @@ export const PUSHUP: ExerciseConfig = {
   thresholds: { topEnter: 160, topExit: 150, bottomEnter: 90, bottomExit: 100 },
   shallowHint: 'Lower your chest',
 };
+
+export const EXERCISES: ExerciseConfig[] = [SQUAT, PUSHUP];

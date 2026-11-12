@@ -1,3 +1,11 @@
+<div class="tabs">
+  @for (ex of exercises; track ex.id) {
+    <button type="button"
+            [class.active]="ex.id === exercise().id"
+            (click)="selectExercise(ex)">{{ ex.label }}</button>
+  }
+</div>
+
 <div class="stage" [style.aspect-ratio]="ratio()">
   <!-- video and canvas share one mirrored layer so they always align -->
   <div class="layer" [class.mirrored]="mirrored()">

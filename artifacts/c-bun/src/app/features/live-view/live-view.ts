@@ -6,7 +6,7 @@ import { DrawingUtils, PoseLandmarker, PoseLandmarkerResult } from '@mediapipe/t
 import { Camera } from '../../core/camera';
 import { Pose } from '../../core/pose';
 import { ExerciseTracker } from '../../core/exercise-tracker';
-import { SQUAT } from '../../core/exercises';
+import { EXERCISES, ExerciseConfig } from '../../core/exercises';
 
 @Component({
   selector: 'app-live-view',
@@ -46,6 +46,14 @@ export class LiveView implements OnDestroy {
   readonly angle = this.tracker.angle;
   readonly feedback = this.tracker.feedback;
 
+  readonly exercises = EXERCISES;
+  readonly exercise = signal<ExerciseConfig>(EXERCISES[0]);
+
+  selectExercise(ex: ExerciseConfig): void {
+    this.exercise.set(ex);
+    if (this.running()) this.tracker.start(ex); // restarts and resets the count
+  }
+  
   resetReps(): void { this.tracker.reset(); }
 
   async start(): Promise<void> {
@@ -55,7 +63,8 @@ export class LiveView implements OnDestroy {
       await this.attach(stream);
       this.running.set(true);
       this.runLoop();
-      this.tracker.start(SQUAT);
+      this.tracker.start(this.exercise());
+
     } catch (e) {
       if ((e as DOMException)?.name === 'AbortError') return; // cancelled, ignore
       this.teardown(); // errors are already in camera/pose state signals
