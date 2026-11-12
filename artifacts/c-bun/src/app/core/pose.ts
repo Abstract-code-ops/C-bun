@@ -6,9 +6,9 @@ import {
   NormalizedLandmark,
   Landmark,
   PoseLandmarkerResult
-} from '@mediapipe/vision-tasks';
+} from '@mediapipe/tasks-vision';
 
-const MP_VERSION = 1.2.3;
+const MP_VERSION = "1.2.3";
 const WASM_URL = `https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@${MP_VERSION}/wasm`;
 const MODEL_URL = 'https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/latest/pose_landmarker_lite.task';
 
