@@ -36,12 +36,12 @@ const DEFAULT_CONFIG: Required<CameraConfig> = {
 export class Camera {
 
   private stream: MediaStream | null = null;
-  private activeTrack: MediaStreamTrack | null;
+  private activeTrack: MediaStreamTrack | null = null;
   private operationId = 0;
   private config = {...DEFAULT_CONFIG};
   private readonly _state = signal<CameraState>({
     status: 'idle',
-    facing: 'environment',
+    facing: DEFAULT_CONFIG.facing,
     deviceId: null,
     width: null,
     height: null,
@@ -80,7 +80,7 @@ export class Camera {
     }));
 
     try {
-       const stream= navigator.mediaDevices.getUserMedia({
+       const stream= await navigator.mediaDevices.getUserMedia({
          audio: false,
          video: {
            facingMode: {
@@ -111,10 +111,11 @@ export class Camera {
       }
       this.activeTrack = track;
       const settings = track.getSettings();
+      const facing = (settings.facingMode as CameraFacing) ?? this.config.facing;
       track.addEventListener('ended', this.handleTrackEnded);
       this._state.set({
         status: 'streaming',
-        facing: this.config.facing,
+        facing: facing,
         deviceId: settings.deviceId ?? null,
         width: settings.width ?? null,
         height: settings.height ?? null,
@@ -122,7 +123,7 @@ export class Camera {
       });
       return stream;
     } catch (error) {
-       if (operation == this.operationId) {
+       if (operation === this.operationId) {
          this.releaseStream();
          this._state.update(state => ({
            ...state,
@@ -135,15 +136,17 @@ export class Camera {
   }
 
   async switchCamera(): Promise<MediaStream>{
-    const nextFacing: CameraFacing = this.config.facing == 'environment' ? 'user' : 'environment';
+    const nextFacing: CameraFacing = this.config.facing === 'environment' ? 'user' : 'environment';
     this._state.update(state => ({
       ...state,
       status: 'switching',
       error: null,
     }));
 
+    this.operationId++;
+    
     // release existing camera
-    this.stop();
+    this.releaseStream();
 
     return this.start({
       ...this.config,

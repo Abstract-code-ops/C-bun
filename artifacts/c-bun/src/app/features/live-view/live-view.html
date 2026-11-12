@@ -1,0 +1,30 @@
+<div class="stage" [style.aspect-ratio]="ratio()">
+  <!-- video and canvas share one mirrored layer so they always align -->
+  <div class="layer" [class.mirrored]="mirrored()">
+    <video #video playsinline></video>
+    <canvas #canvas></canvas>
+  </div>
+
+  @if (running()) {
+    <div class="hud">
+      <span>{{ fps() }} FPS</span>
+      <span [class.ok]="detected()">{{ detected() ? 'Pose found' : 'No pose' }}</span>
+    </div>
+  }
+
+  @if (poseStatus() === 'loading') {
+    <div class="msg">Loading pose model…</div>
+  }
+  @if (errorMsg(); as msg) {
+    <div class="msg error">{{ msg }}</div>
+  }
+</div>
+
+<div class="controls">
+  @if (!running()) {
+    <button (click)="start()" [disabled]="busy()">Start</button>
+  } @else {
+    <button (click)="switchCamera()" [disabled]="busy()">Switch camera</button>
+    <button (click)="stop()">Stop</button>
+  }
+</div>
