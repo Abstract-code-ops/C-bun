@@ -1,0 +1,12 @@
+:host { display: block; max-width: 640px; margin: 0 auto; }
+.stage { position: relative; width: 100%; background: #000; overflow: hidden; border-radius: 12px; }
+.layer { position: absolute; inset: 0; }
+.layer.mirrored { transform: scaleX(-1); }
+video, canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hud { position: absolute; top: 8px; left: 8px; display: flex; gap: 8px; font: 600 12px system-ui; }
+.hud span { background: #000a; color: #fff; padding: 4px 8px; border-radius: 6px; }
+.hud .ok { color: #00e5a0; }
+.msg { position: absolute; inset: auto 8px 8px 8px; padding: 8px; border-radius: 6px; background: #000b; color: #fff; font: 14px system-ui; }
+.msg.error { background: #b00020cc; }
+.controls { display: flex; gap: 8px; margin-top: 12px; }
+button { flex: 1; padding: 14px; font-size: 16px; border-radius: 10px; border: 0; }
