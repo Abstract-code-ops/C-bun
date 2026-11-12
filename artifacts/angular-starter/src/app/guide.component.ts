@@ -45,8 +45,8 @@ import { RouterLink } from "@angular/router";
           <p>Run the app in development mode, or create a production build.</p>
         </div>
         <div class="commands">
-          <code><span>$</span> pnpm --filter @workspace/angular-starter run dev</code>
-          <code><span>$</span> pnpm --filter @workspace/angular-starter run build</code>
+          <code><span>$</span> pnpm --filter @workspace/c-bun run dev</code>
+          <code><span>$</span> pnpm --filter @workspace/c-bun run build</code>
         </div>
       </div>
     </section>

@@ -8,7 +8,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
   template: `
     <div class="site-shell">
       <header class="topbar">
-        <a class="brand" routerLink="/" aria-label="Angular Starter home">
+        <a class="brand" routerLink="/" aria-label="c-bun home">
           <span class="brand-mark" aria-hidden="true">
             <svg viewBox="0 0 48 48" fill="none">
               <path d="M24 3 4 10.2l3.1 25.6L24 45l16.9-9.2L44 10.2 24 3Z" fill="#DD0031" />
@@ -17,7 +17,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
               <path d="m24 12.1-9.6 21.2h3.6l1.9-4.7h8.2l1.9 4.7h3.6L24 12.1Zm0 7.7 2.8 6.1h-5.6l2.8-6.1Z" fill="#DD0031" />
             </svg>
           </span>
-          <span>Angular <span class="brand-light">Starter</span></span>
+          <span>c-bun</span>
         </a>
 
         <nav class="main-nav" aria-label="Main navigation">

@@ -1,12 +1,12 @@
-# Angular Starter Workspace
+# c-bun
 
-An Angular starter application with routing, strict TypeScript checks, and a live preview.
+An Angular application with routing, strict TypeScript checks, and a live preview.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/angular-starter run dev` — run the Angular app
-- `pnpm --filter @workspace/angular-starter run build` — create a production build
-- `pnpm --filter @workspace/angular-starter run typecheck` — check Angular templates and TypeScript
+- `pnpm --filter @workspace/c-bun run dev` — run the Angular app
+- `pnpm --filter @workspace/c-bun run build` — create a production build
+- `pnpm --filter @workspace/c-bun run typecheck` — check Angular templates and TypeScript
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
@@ -39,7 +39,7 @@ An Angular starter application with routing, strict TypeScript checks, and a liv
 
 ## Product
 
-The starter home page links to a workspace guide and includes a not-found route. Use it as the base for a new Angular app.
+The c-bun home page links to a workspace guide and includes a not-found route.
 
 ## User preferences
 
