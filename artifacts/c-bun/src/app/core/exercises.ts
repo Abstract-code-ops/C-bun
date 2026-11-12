@@ -17,7 +17,7 @@ export const SQUAT: ExerciseConfig = {
   id: 'squat',
   label: 'Squat',
   joints: { left: [23, 25, 27], right: [24, 26, 28] },
-  thresholds: { topEnter: 165, topExit: 155, bottomEnter: 100, bottomExit: 110 },
+  thresholds: { topEnter: 165, topExit: 155, bottomEnter: 50, bottomExit: 70 },
   shallowHint: 'Go deeper',
 };
 
