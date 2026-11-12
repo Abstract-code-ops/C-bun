@@ -9,6 +9,15 @@
     <div class="hud">
       <span>{{ fps() }} FPS</span>
       <span [class.ok]="detected()">{{ detected() ? 'Pose found' : 'No pose' }}</span>
+      <span>{{ angle() ?? '--' }}°</span>
+    </div>
+  }
+
+  @if (running()) {
+    <div class="reps">
+      <div class="count">{{ reps() }}</div>
+      <div class="phase">{{ phase() }}</div>
+      @if (feedback(); as hint) { <div class="hint">{{ hint }}</div> }
     </div>
   }
 
@@ -26,5 +35,6 @@
   } @else {
     <button (click)="switchCamera()" [disabled]="busy()">Switch camera</button>
     <button (click)="stop()">Stop</button>
+    <button (click)="resetReps()">Reset</button>
   }
 </div>

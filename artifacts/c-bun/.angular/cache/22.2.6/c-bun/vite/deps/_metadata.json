@@ -1,35 +1,51 @@
 {
-  "hash": "a9141c04",
-  "configHash": "e62da942",
-  "lockfileHash": "1a50f9ef",
-  "browserHash": "c2c6acac",
+  "hash": "26f5c0a3",
+  "configHash": "14302683",
+  "lockfileHash": "ff34560b",
+  "browserHash": "185a8771",
   "optimized": {
     "@angular/core": {
       "src": "../../../../../../../../node_modules/.pnpm/@angular+core@22.2.5_@angular+compiler@22.2.5_rxjs@7.8.2_zone.js@0.16.3/node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "3452f29e",
+      "fileHash": "0d9b5627",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../../../node_modules/.pnpm/@angular+platform-browser@22.2.5_@angular+animations@22.2.5_@angular+core@22.2.5_@angul_2736695645f59471b9c56ef12ccc597a/node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "6bb10d2b",
+      "fileHash": "e7734208",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../../../node_modules/.pnpm/@angular+router@22.2.5_@angular+common@22.2.5_@angular+core@22.2.5_@angular+compiler@22_ec77f9c85b2c063a7d371e759e7828c0/node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "7a477654",
+      "fileHash": "de8f276a",
+      "needsInterop": false
+    },
+    "@mediapipe/tasks-vision": {
+      "src": "../../../../../../node_modules/@mediapipe/tasks-vision/vision_bundle.mjs",
+      "file": "@mediapipe_tasks-vision.js",
+      "fileHash": "bfe210d2",
+      "needsInterop": false
+    },
+    "rxjs": {
+      "src": "../../../../../../../../node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/index.js",
+      "file": "rxjs.js",
+      "fileHash": "95bef749",
       "needsInterop": false
     }
   },
   "chunks": {
-    "core-ZXXfRM_x": {
-      "file": "core-ZXXfRM_x.js",
+    "core-Drq8OHIF": {
+      "file": "core-Drq8OHIF.js",
       "isDynamicEntry": false
     },
-    "platform-browser-BqKhz2pS": {
-      "file": "platform-browser-BqKhz2pS.js",
+    "esm5-DNszYheg": {
+      "file": "esm5-DNszYheg.js",
+      "isDynamicEntry": false
+    },
+    "platform-browser-CTYDCjIz": {
+      "file": "platform-browser-CTYDCjIz.js",
       "isDynamicEntry": false
     }
   }

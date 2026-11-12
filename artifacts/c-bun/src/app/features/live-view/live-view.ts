@@ -5,6 +5,8 @@ import {
 import { DrawingUtils, PoseLandmarker, PoseLandmarkerResult } from '@mediapipe/tasks-vision';
 import { Camera } from '../../core/camera';
 import { Pose } from '../../core/pose';
+import { ExerciseTracker } from '../../core/exercise-tracker';
+import { SQUAT } from '../../core/exercises';
 
 @Component({
   selector: 'app-live-view',
@@ -15,6 +17,7 @@ export class LiveView implements OnDestroy {
   private readonly camera = inject(Camera);
   private readonly pose = inject(Pose);
   private readonly zone = inject(NgZone);
+  private readonly tracker = inject(ExerciseTracker);
 
   private readonly videoRef = viewChild.required<ElementRef<HTMLVideoElement>>('video');
   private readonly canvasRef = viewChild.required<ElementRef<HTMLCanvasElement>>('canvas');
@@ -38,6 +41,13 @@ export class LiveView implements OnDestroy {
   private lastVideoTime = -1;
   private drawer: DrawingUtils | null = null;
 
+  readonly reps = this.tracker.reps;
+  readonly phase = this.tracker.phase;
+  readonly angle = this.tracker.angle;
+  readonly feedback = this.tracker.feedback;
+
+  resetReps(): void { this.tracker.reset(); }
+
   async start(): Promise<void> {
     if (this.running()) return;
     try {
@@ -45,6 +55,7 @@ export class LiveView implements OnDestroy {
       await this.attach(stream);
       this.running.set(true);
       this.runLoop();
+      this.tracker.start(SQUAT);
     } catch (e) {
       if ((e as DOMException)?.name === 'AbortError') return; // cancelled, ignore
       this.teardown(); // errors are already in camera/pose state signals
@@ -141,6 +152,7 @@ export class LiveView implements OnDestroy {
     const video = this.videoRef().nativeElement;
     video.srcObject = null;
     const canvas = this.canvasRef().nativeElement;
+    this.tracker.stop();
     canvas.getContext('2d')?.clearRect(0, 0, canvas.width, canvas.height);
   }
 }
