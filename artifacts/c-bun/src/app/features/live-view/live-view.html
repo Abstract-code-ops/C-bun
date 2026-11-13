@@ -18,6 +18,7 @@
       <span>{{ fps() }} FPS</span>
       <span [class.ok]="detected()">{{ detected() ? 'Pose found' : 'No pose' }}</span>
       <span>{{ angle() ?? '--' }}°</span>
+      <div class="trace">@for (l of trace(); track $index) { <div>{{ l }}</div> }</div>
     </div>
   }
 

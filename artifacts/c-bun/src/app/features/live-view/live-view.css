@@ -17,5 +17,6 @@ button { flex: 1; padding: 14px; font-size: 16px; border-radius: 10px; border: 0
 .tabs { display: flex; gap: 8px; margin-bottom: 12px; }
 .tabs button { background: #2a2a2a; color: #fff; }
 .tabs button.active { background: #00e5a0; color: #000; font-weight: 700; }
+.trace { position: absolute; top: 40px; left: 8px; font: 11px monospace; color: #fff; background: #000a; padding: 4px 6px; border-radius: 6px; }
 
 

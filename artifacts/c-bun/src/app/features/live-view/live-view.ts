@@ -25,7 +25,8 @@ export class LiveView implements OnDestroy {
   readonly cam = this.camera.state;
   readonly poseStatus = this.pose.status;
   readonly poseError = this.pose.error;
-
+  readonly trace = this.tracker.trace;
+  
   readonly fps = signal(0);
   readonly detected = signal(false);
   readonly ratio = signal('4 / 3');

@@ -22,6 +22,7 @@ export class ExerciseTracker {
 
   readonly reps = signal(0);
   readonly phase = signal<Phase>('top');
+  readonly trace = signal<string[]>([]);
   readonly angle = signal<number | null>(null); // debug: use it to tune thresholds
   readonly feedback = signal<string | null>(null);
 
@@ -50,6 +51,7 @@ export class ExerciseTracker {
     this.phase.set('top');
     this.feedback.set(null);
     this.lastT = 0;
+    this.trace.set([]);
   }
 
   private onFrame(frame: PoseFrame | null): void {
@@ -76,7 +78,13 @@ export class ExerciseTracker {
     const smooth = this.ema.next(raw);
     this.angle.set(Math.round(smooth));
 
+    const before = counter.phase;
     const ev = counter.update(smooth, frame.timestamp);
+    this.phase.set(counter.phase);
+    if (counter.phase !== before) {
+      this.trace.update(t => [...t.slice(-5), `${before}→${counter.phase} ${Math.round(smooth)}°`]);
+    }
+
     this.phase.set(counter.phase);
     if (ev) {
       this._rep$.next(ev);
