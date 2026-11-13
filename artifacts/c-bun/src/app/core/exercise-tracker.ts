@@ -83,6 +83,7 @@ export class ExerciseTracker {
     this.phase.set(counter.phase);
     if (counter.phase !== before) {
       this.trace.update(t => [...t.slice(-5), `${before}→${counter.phase} ${Math.round(smooth)}°`]);
+      if (before === 'top') this.feedback.set(null); // new rep started, clear the old hint
     }
 
     this.phase.set(counter.phase);
