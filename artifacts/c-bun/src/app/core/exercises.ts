@@ -26,7 +26,7 @@ export const PUSHUP: ExerciseConfig = {
   id: 'pushup',
   label: 'Push-up',
   joints: { left: [11, 13, 15], right: [12, 14, 16] },
-  thresholds: { topEnter: 160, topExit: 150, bottomEnter: 90, bottomExit: 100 },
+  thresholds: { topEnter: 160, topExit: 150, bottomEnter: 70, bottomExit: 85 },
   shallowHint: 'Lower your chest',
 };
 
