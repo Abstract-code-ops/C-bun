@@ -1,6 +1,4 @@
-<nav class="nav">
-  <button type="button" [class.active]="view() === 'train'" (click)="view.set('train')">Train</button>
-  <button type="button" [class.active]="view() === 'history'" (click)="view.set('history')">History</button>
-</nav>
-<app-live-view [style.display]="view() === 'train' ? 'block' : 'none'" />
-@if (view() === 'history') { <app-history-view /> }
+<mat-tab-group preserveContent animationDuration="0ms">
+  <mat-tab label="Train"><app-live-view /></mat-tab>
+  <mat-tab label="History"><app-history-view /></mat-tab>
+</mat-tab-group>

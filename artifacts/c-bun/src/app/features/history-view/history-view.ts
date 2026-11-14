@@ -1,92 +1,89 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MotionChart } from '../../shared/motion-chart/motion-chart';
+import { RepTable } from '../../shared/rep-table/rep-table';
 import { EXERCISES } from '../../core/exercises';
 import { Store } from '../../core/store';
 import { SetRecord, countedReps } from '../../core/models';
 
 @Component({
   selector: 'app-history-view',
-  imports: [MotionChart, DatePipe],
+  imports: [DatePipe, MatButtonModule, MatCardModule, MatExpansionModule, MatIconModule, MotionChart, RepTable],
   template: `
-  <section class="wrap">
     <h2>Personal bests</h2>
     <div class="maxes">
       @for (ex of exercises; track ex.id) {
-        <div class="max"><span>{{ ex.label }}</span><strong>{{ store.maxes()[ex.id]?.reps ?? '–' }}</strong></div>
+        <mat-card appearance="outlined">
+          <mat-card-content class="max">
+            <span>{{ ex.label }}</span>
+            <strong>{{ store.maxes()[ex.id]?.reps ?? '–' }}</strong>
+          </mat-card-content>
+        </mat-card>
       }
     </div>
 
     <div class="head">
       <h2>Sets</h2>
-      <button type="button" (click)="download()" [disabled]="!store.sets().length">Export JSON</button>
+      <button mat-stroked-button (click)="download()" [disabled]="!store.sets().length">
+        <mat-icon>download</mat-icon> Export
+      </button>
     </div>
+
     @if (!store.sets().length) { <p class="note">No saved sets yet.</p> }
 
-    @for (s of store.sets(); track s.id) {
-      <article class="set">
-        <button type="button" class="summary" (click)="toggle(s.id)">
-          <span>{{ label(s.exerciseId) }} · {{ s.mode === 'max' ? 'Max test' : 'Free' }}</span>
-          <span>{{ reps(s) }} reps · {{ s.startedAt | date: 'MMM d, HH:mm' }}</span>
-        </button>
-        @if (openId() === s.id) {
-          @if (s.trace.length) {
-            <app-motion-chart [points]="s.trace" [thresholds]="thresholds(s.exerciseId)" [reps]="s.reps" />
-          } @else {
-            <p class="note">Motion trace was not kept (storage was full).</p>
-          }
-          <table>
-            <thead><tr><th>Rep</th><th>Total</th><th>Closing</th><th>Opening</th></tr></thead>
-            <tbody>
-              @for (r of s.reps; track r.endMs) {
-                <tr [class.partial]="!r.counted">
-                  <td>{{ r.counted ? r.index : '×' }}</td>
-                  <td>{{ sec(r.totalMs) }}</td>
-                  <td>{{ r.counted || r.gateMissed ? sec(r.downMs) : '–' }}</td>
-                  <td>{{ r.counted || r.gateMissed ? sec(r.upMs) : '–' }}</td>
-                </tr>
+    <mat-accordion>
+      @for (s of store.sets(); track s.id) {
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{ label(s.exerciseId) }} · {{ reps(s) }} reps</mat-panel-title>
+            <mat-panel-description>{{ s.mode === 'max' ? 'Max test' : 'Free' }}
+              · {{ s.startedAt | date: 'MMM d, HH:mm' }}</mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <ng-template matExpansionPanelContent>
+            <div class="body">
+              @if (s.trace.length) {
+                <app-motion-chart [points]="s.trace" [thresholds]="thresholds(s.exerciseId)" [reps]="s.reps" />
+              } @else {
+                <p class="note">Motion trace was not kept (storage was full).</p>
               }
-            </tbody>
-          </table>
-          <button type="button" class="danger" (click)="remove(s.id)">Delete set</button>
-        }
-      </article>
-    }
-    @if (store.error(); as e) { <p class="err">{{ e }}</p> }
-  </section>
+              <app-rep-table [reps]="s.reps" />
+              <button mat-button (click)="remove(s)"><mat-icon>delete</mat-icon> Delete set</button>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+      }
+    </mat-accordion>
   `,
   styles: `
-    :host { display: block; max-width: 640px; margin: 0 auto; }
-    h2 { font: 700 18px system-ui; margin: 16px 0 8px; }
+    :host { display: block; max-width: 640px; margin: 0 auto; padding: 12px; }
+    h2 { font-size: 18px; font-weight: 600; margin: 16px 0 8px; }
     .maxes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .max { background: #2a2a2a; color: #fff; border-radius: 10px; padding: 12px; text-align: center; font: 13px system-ui; }
-    .max strong { display: block; font: 800 28px system-ui; color: #00e5a0; }
+    .max { display: flex; flex-direction: column; align-items: center; padding-top: 16px; font-size: 13px; }
+    .max strong { font-size: 28px; }
     .head { display: flex; justify-content: space-between; align-items: center; }
-    button { padding: 10px 14px; font-size: 14px; border-radius: 10px; border: 0; background: #2a2a2a; color: #fff; }
-    .set { border: 1px solid #8884; border-radius: 10px; margin-bottom: 8px; padding: 8px; display: flex; flex-direction: column; gap: 8px; }
-    .summary { display: flex; justify-content: space-between; background: transparent; color: inherit; font: 14px system-ui; padding: 6px; }
-    table { width: 100%; border-collapse: collapse; font: 13px system-ui; }
-    th, td { text-align: center; padding: 4px; border-bottom: 1px solid #8884; }
-    tr.partial { color: #d33; }
-    .danger { background: #b00020; }
-    .note { font: 13px system-ui; opacity: .75; }
-    .err { color: #b00020; font: 14px system-ui; }
+    .body { display: flex; flex-direction: column; gap: 12px; }
+    .note { font-size: 13px; opacity: .75; }
   `,
 })
 export class HistoryView {
   protected readonly store = inject(Store);
+  private readonly snack = inject(MatSnackBar);
   protected readonly exercises = EXERCISES;
-  protected readonly openId = signal<string | null>(null);
 
   protected label(id: string): string { return EXERCISES.find(e => e.id === id)?.label ?? id; }
   protected thresholds(id: string) { return EXERCISES.find(e => e.id === id)?.thresholds ?? null; }
   protected reps(s: SetRecord): number { return countedReps(s); }
-  protected sec(ms: number): string { return (ms / 1000).toFixed(1) + 's'; }
-  protected toggle(id: string): void { this.openId.update(c => (c === id ? null : id)); }
 
-  protected remove(id: string): void {
-    this.openId.set(null);
-    this.store.deleteSet(id);
+  protected remove(s: SetRecord): void {
+    this.store.deleteSet(s.id);
+    this.snack.open('Set deleted', 'Undo', { duration: 5000 })
+      .onAction().subscribe(() => this.store.restoreSet(s));
   }
 
   protected download(): void {

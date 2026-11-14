@@ -16,6 +16,11 @@ export class Store {
     this.persistSets();
   }
 
+  restoreSet(s: SetRecord): void {
+    this.sets.update(list => [...list, s].sort((a, b) => b.startedAt - a.startedAt));
+    this.persistSets();
+  }
+
   deleteSet(id: string): void {
     this.sets.update(list => list.filter(s => s.id !== id));
     this.persistSets();

@@ -2,6 +2,10 @@ import {
   Component, ElementRef, NgZone, OnDestroy,
   computed, inject, signal, viewChild,
 } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DrawingUtils, PoseLandmarker, PoseLandmarkerResult } from '@mediapipe/tasks-vision';
 import { Camera } from '../../core/camera';
 import { Pose } from '../../core/pose';
@@ -14,7 +18,7 @@ import { SetRecorder } from '../../core/set-recorder';
   selector: 'app-live-view',
   templateUrl: './live-view.html',
   styleUrl: './live-view.css',
-  imports: [SetPanel],
+  imports: [SetPanel, MatButtonModule, MatButtonToggleModule, MatIconModule, MatProgressBarModule],
 })
 export class LiveView implements OnDestroy {
   private readonly camera = inject(Camera);

@@ -1,14 +1,11 @@
-<div class="tabs">
+<mat-button-toggle-group class="tabs" [value]="exercise()" [disabled]="locked()"
+    (change)="selectExercise($event.value)" aria-label="Exercise">
   @for (ex of exercises; track ex.id) {
-    <button type="button"
-            [class.active]="ex.id === exercise().id"
-            [disabled]="locked()"
-            (click)="selectExercise(ex)">{{ ex.label }}</button>
+    <mat-button-toggle [value]="ex">{{ ex.label }}</mat-button-toggle>
   }
-</div>
+</mat-button-toggle-group>
 
 <div class="stage" [style.aspect-ratio]="ratio()">
-  <!-- video and canvas share one mirrored layer so they always align -->
   <div class="layer" [class.mirrored]="mirrored()">
     <video #video playsinline></video>
     <canvas #canvas></canvas>
@@ -19,33 +16,35 @@
       <span>{{ fps() }} FPS</span>
       <span [class.ok]="detected()">{{ detected() ? 'Pose found' : 'No pose' }}</span>
       <span>{{ angle() ?? '--' }}°</span>
-      <div class="trace">@for (l of trace(); track $index) { <div>{{ l }}</div> }</div>
     </div>
-  }
-
-  @if (running()) {
     <div class="reps">
       <div class="count">{{ reps() }}</div>
       <div class="phase">{{ phaseLabel() }}</div>
       @if (feedback(); as hint) { <div class="hint">{{ hint }}</div> }
     </div>
+    <div class="trace">@for (l of trace(); track $index) { <div>{{ l }}</div> }</div>
   }
 
-  @if (poseStatus() === 'loading') {
-    <div class="msg">Loading pose model…</div>
-  }
-  @if (errorMsg(); as msg) {
-    <div class="msg error">{{ msg }}</div>
-  }
+  @if (errorMsg(); as msg) { <div class="msg error">{{ msg }}</div> }
 </div>
+
+@if (busy()) { <mat-progress-bar mode="indeterminate" /> }
 
 <div class="controls">
   @if (!running()) {
-    <button (click)="start()" [disabled]="busy()">Start</button>
+    <button mat-flat-button (click)="start()" [disabled]="busy()">
+      <mat-icon>videocam</mat-icon> Start camera
+    </button>
   } @else {
-    <button (click)="switchCamera()" [disabled]="busy()">Switch camera</button>
-    <button (click)="stop()">Stop</button>
-    <button (click)="resetReps()" [disabled]="locked()">Reset</button>
+    <button mat-stroked-button (click)="switchCamera()" [disabled]="busy()">
+      <mat-icon>cameraswitch</mat-icon> Switch
+    </button>
+    <button mat-stroked-button (click)="resetReps()" [disabled]="locked()">
+      <mat-icon>restart_alt</mat-icon> Reset
+    </button>
+    <button mat-stroked-button (click)="stop()">
+      <mat-icon>videocam_off</mat-icon> Stop
+    </button>
   }
 </div>
 
