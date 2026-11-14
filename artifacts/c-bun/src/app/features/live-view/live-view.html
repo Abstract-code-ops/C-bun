@@ -2,6 +2,7 @@
   @for (ex of exercises; track ex.id) {
     <button type="button"
             [class.active]="ex.id === exercise().id"
+            [disabled]="locked()"
             (click)="selectExercise(ex)">{{ ex.label }}</button>
   }
 </div>
@@ -44,6 +45,8 @@
   } @else {
     <button (click)="switchCamera()" [disabled]="busy()">Switch camera</button>
     <button (click)="stop()">Stop</button>
-    <button (click)="resetReps()">Reset</button>
+    <button (click)="resetReps()" [disabled]="locked()">Reset</button>
   }
 </div>
+
+<app-set-panel [exercise]="exercise()" [active]="running()" />

@@ -1,41 +1,51 @@
 {
-  "hash": "26f5c0a3",
-  "configHash": "14302683",
+  "hash": "e6a0ba84",
+  "configHash": "af369871",
   "lockfileHash": "ff34560b",
-  "browserHash": "185a8771",
+  "browserHash": "23308510",
   "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../../../node_modules/.pnpm/@angular+common@22.2.5_@angular+core@22.2.5_@angular+compiler@22.2.5_rxjs@7.8.2_zone.js@0.16.3__rxjs@7.8.2/node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "b321c10a",
+      "needsInterop": false
+    },
     "@angular/core": {
       "src": "../../../../../../../../node_modules/.pnpm/@angular+core@22.2.5_@angular+compiler@22.2.5_rxjs@7.8.2_zone.js@0.16.3/node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "0d9b5627",
+      "fileHash": "1adbdc77",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../../../node_modules/.pnpm/@angular+platform-browser@22.2.5_@angular+animations@22.2.5_@angular+core@22.2.5_@angul_2736695645f59471b9c56ef12ccc597a/node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "e7734208",
+      "fileHash": "227bbaa8",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../../../node_modules/.pnpm/@angular+router@22.2.5_@angular+common@22.2.5_@angular+core@22.2.5_@angular+compiler@22_ec77f9c85b2c063a7d371e759e7828c0/node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "de8f276a",
+      "fileHash": "628634a1",
       "needsInterop": false
     },
     "@mediapipe/tasks-vision": {
       "src": "../../../../../../node_modules/@mediapipe/tasks-vision/vision_bundle.mjs",
       "file": "@mediapipe_tasks-vision.js",
-      "fileHash": "bfe210d2",
+      "fileHash": "fb188af7",
       "needsInterop": false
     },
     "rxjs": {
       "src": "../../../../../../../../node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/index.js",
       "file": "rxjs.js",
-      "fileHash": "95bef749",
+      "fileHash": "ab797364",
       "needsInterop": false
     }
   },
   "chunks": {
+    "common-D0y4V-dN": {
+      "file": "common-D0y4V-dN.js",
+      "isDynamicEntry": false
+    },
     "core-Drq8OHIF": {
       "file": "core-Drq8OHIF.js",
       "isDynamicEntry": false
@@ -44,8 +54,8 @@
       "file": "esm5-DNszYheg.js",
       "isDynamicEntry": false
     },
-    "platform-browser-CTYDCjIz": {
-      "file": "platform-browser-CTYDCjIz.js",
+    "platform-browser-C-E8NkV8": {
+      "file": "platform-browser-C-E8NkV8.js",
       "isDynamicEntry": false
     }
   }

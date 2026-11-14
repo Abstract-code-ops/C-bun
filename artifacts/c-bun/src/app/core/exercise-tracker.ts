@@ -10,6 +10,8 @@ const MIN_VISIBILITY = 0.5;
 const GAP_RESET_MS = 500;   // reset smoothing after a gap
 const GAP_ABORT_MS = 2000;  // abandon a rep if tracking is lost this long
 
+export interface AngleSample { t: number; angle: number }
+
 @Service()
 export class ExerciseTracker {
   private readonly pose = inject(Pose);
@@ -30,6 +32,9 @@ export class ExerciseTracker {
   /** Phase 3 (form scoring, storage) subscribes here. */
   private readonly _rep$ = new Subject<RepEvent>();
   readonly rep$ = this._rep$.asObservable();
+  private readonly _sample$ = new Subject<AngleSample>();
+  readonly sample$ = this._sample$.asObservable();
+
 
   private setPhase(p: Phase, cfg: ExerciseConfig): void {
     this.phase.set(p);

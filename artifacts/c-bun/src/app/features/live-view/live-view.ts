@@ -7,17 +7,21 @@ import { Camera } from '../../core/camera';
 import { Pose } from '../../core/pose';
 import { ExerciseTracker } from '../../core/exercise-tracker';
 import { EXERCISES, ExerciseConfig } from '../../core/exercises';
+import { SetPanel } from '../set-panel/set-panel';
+import { SetRecorder } from '../../core/set-recorder';
 
 @Component({
   selector: 'app-live-view',
   templateUrl: './live-view.html',
   styleUrl: './live-view.css',
+  imports: [SetPanel],
 })
 export class LiveView implements OnDestroy {
   private readonly camera = inject(Camera);
   private readonly pose = inject(Pose);
   private readonly zone = inject(NgZone);
   private readonly tracker = inject(ExerciseTracker);
+  private readonly recorder = inject(SetRecorder);
 
   private readonly videoRef = viewChild.required<ElementRef<HTMLVideoElement>>('video');
   private readonly canvasRef = viewChild.required<ElementRef<HTMLCanvasElement>>('canvas');
@@ -37,6 +41,8 @@ export class LiveView implements OnDestroy {
     ['requesting', 'switching'].includes(this.cam().status) ||
     this.poseStatus() === 'loading');
   readonly errorMsg = computed(() => this.cam().error ?? this.poseError());
+  // Lock exercise switching and reset while a set is in progress or awaiting save
+  readonly locked = computed(() => this.recorder.state() !== 'idle');
 
   private raf = 0;
   private lastVideoTime = -1;
@@ -85,6 +91,7 @@ export class LiveView implements OnDestroy {
   }
 
   stop(): void {
+    this.recorder.end();
     this.camera.stop();
     this.teardown();
   }
