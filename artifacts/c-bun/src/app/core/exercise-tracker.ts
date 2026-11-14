@@ -19,7 +19,7 @@ export class ExerciseTracker {
   private counter: RepCounter | null = null;
   private config: ExerciseConfig | null = null;
   private side: Side = 'left';
-  private readonly ema = new Ema(0.4);
+  private readonly ema = new Ema(40);
   private lastT = 0;
 
   readonly reps = signal(0);
@@ -87,7 +87,8 @@ export class ExerciseTracker {
     if (this.lastT && gap > GAP_RESET_MS) this.ema.reset();
     this.lastT = frame.timestamp;
 
-    const smooth = this.ema.next(raw);
+    const smooth = this.ema.next(raw, frame.timestamp);
+    this._sample$.next({ t: frame.timestamp, angle: smooth });
     this.angle.set(Math.round(smooth));
 
     const gate = cfg.gate ? cfg.gate(frame, this.side) : true;

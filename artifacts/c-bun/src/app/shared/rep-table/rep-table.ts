@@ -15,6 +15,10 @@ import { RepRecord } from '../../core/models';
         <th mat-header-cell *matHeaderCellDef>Total</th>
         <td mat-cell *matCellDef="let r">{{ sec(r.totalMs) }}</td>
       </ng-container>
+      <ng-container matColumnDef="min">
+        <th mat-header-cell *matHeaderCellDef>Min</th>
+        <td mat-cell *matCellDef="let r">{{ r.minAngle }}°</td>
+      </ng-container>
       <ng-container matColumnDef="closing">
         <th mat-header-cell *matHeaderCellDef>Closing</th>
         <td mat-cell *matCellDef="let r">{{ r.counted || r.gateMissed ? sec(r.downMs) : '–' }}</td>
@@ -40,7 +44,7 @@ import { RepRecord } from '../../core/models';
 })
 export class RepTable {
   readonly reps = input.required<RepRecord[]>();
-  protected readonly cols = ['rep', 'total', 'closing', 'opening'];
+  protected readonly cols = ['rep', 'total', 'min', 'closing', 'opening'];
   protected readonly trackBy = (_: number, r: RepRecord) => r.endMs;
 
   protected sec(ms: number): string {
