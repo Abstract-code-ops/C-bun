@@ -44,6 +44,7 @@ export class LiveView implements OnDestroy {
 
   readonly reps = this.tracker.reps;
   readonly phase = this.tracker.phase;
+  readonly phaseLabel = this.tracker.phaseLabel;
   readonly angle = this.tracker.angle;
   readonly feedback = this.tracker.feedback;
 

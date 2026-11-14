@@ -22,6 +22,7 @@ export class ExerciseTracker {
 
   readonly reps = signal(0);
   readonly phase = signal<Phase>('top');
+  readonly phaseLabel = signal<string>('top');
   readonly trace = signal<string[]>([]);
   readonly angle = signal<number | null>(null); // debug: use it to tune thresholds
   readonly feedback = signal<string | null>(null);
@@ -29,6 +30,11 @@ export class ExerciseTracker {
   /** Phase 3 (form scoring, storage) subscribes here. */
   private readonly _rep$ = new Subject<RepEvent>();
   readonly rep$ = this._rep$.asObservable();
+
+  private setPhase(p: Phase, cfg: ExerciseConfig): void {
+    this.phase.set(p);
+    this.phaseLabel.set(cfg.phaseLabels?.[p] ?? p);
+  }
 
   start(config: ExerciseConfig): void {
     this.stop();
@@ -52,6 +58,7 @@ export class ExerciseTracker {
     this.feedback.set(null);
     this.lastT = 0;
     this.trace.set([]);
+    this.phaseLabel.set(this.config?.phaseLabels?.top ?? 'top');
   }
 
   private onFrame(frame: PoseFrame | null): void {
@@ -78,22 +85,21 @@ export class ExerciseTracker {
     const smooth = this.ema.next(raw);
     this.angle.set(Math.round(smooth));
 
+    const gate = cfg.gate ? cfg.gate(frame, this.side) : true;
     const before = counter.phase;
-    const ev = counter.update(smooth, frame.timestamp);
-    this.phase.set(counter.phase);
+    const ev = counter.update(smooth, frame.timestamp, gate);
+    this.setPhase(counter.phase, cfg);
     if (counter.phase !== before) {
       this.trace.update(t => [...t.slice(-5), `${before}→${counter.phase} ${Math.round(smooth)}°`]);
-      if (before === 'top') this.feedback.set(null); // new rep started, clear the old hint
+      if (before === 'top') this.feedback.set(null);
     }
-
-    this.phase.set(counter.phase);
     if (ev) {
       this._rep$.next(ev);
       if (ev.counted) {
         this.reps.set(counter.reps);
         this.feedback.set(null);
       } else {
-        this.feedback.set(cfg.shallowHint);
+        this.feedback.set(ev.gateMissed ? (cfg.gateHint ?? cfg.shallowHint) : cfg.shallowHint);
       }
     }
   }
