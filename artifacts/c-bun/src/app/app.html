@@ -1,4 +1,24 @@
-<mat-tab-group preserveContent animationDuration="0ms">
-  <mat-tab label="Train"><app-live-view /></mat-tab>
-  <mat-tab label="History"><app-history-view /></mat-tab>
-</mat-tab-group>
+<mat-toolbar class="top">
+  <span class="title">Pose Coach</span>
+  <span class="spacer"></span>
+  <button mat-icon-button aria-label="Setup" (click)="nav.go('setup')">
+    <mat-icon>{{ nav.view() === 'setup' ? 'settings' : 'tune' }}</mat-icon>
+  </button>
+</mat-toolbar>
+
+<main>
+  @if (nav.view() === 'today') { <app-today /> }
+  @if (nav.view() === 'plan') { <app-plan-view /> }
+  <div [hidden]="nav.view() !== 'train'"><app-live-view /></div>
+  @if (nav.view() === 'history') { <app-history-view /> }
+  @if (nav.view() === 'setup') { <app-setup /> }
+</main>
+
+<nav class="bottom" aria-label="Main">
+  @for (t of tabs; track t.id) {
+    <button type="button" [class.active]="nav.view() === t.id" (click)="nav.go(t.id)">
+      <span class="pillbox"><mat-icon>{{ t.icon }}</mat-icon></span>
+      <span class="lbl">{{ t.label }}</span>
+    </button>
+  }
+</nav>

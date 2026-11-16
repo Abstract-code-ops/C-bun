@@ -48,7 +48,7 @@ import { SetRecord, countedReps } from '../../core/models';
           <ng-template matExpansionPanelContent>
             <div class="body">
               @if (s.trace.length) {
-                <app-motion-chart [points]="s.trace" [thresholds]="thresholds(s.exerciseId)" [reps]="s.reps" />
+                <app-motion-chart [points]="s.trace" [segments]="s.segments ?? []"   [thresholds]="thresholds(s.exerciseId)" [reps]="s.reps" />
               } @else {
                 <p class="note">Motion trace was not kept (storage was full).</p>
               }

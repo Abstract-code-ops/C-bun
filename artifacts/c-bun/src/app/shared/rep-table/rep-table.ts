@@ -9,7 +9,7 @@ import { RepRecord } from '../../core/models';
     <table mat-table [dataSource]="reps()" [trackBy]="trackBy">
       <ng-container matColumnDef="rep">
         <th mat-header-cell *matHeaderCellDef>Rep</th>
-        <td mat-cell *matCellDef="let r">{{ r.counted ? r.index : '×' }}</td>
+        <td mat-cell *matCellDef="let r">{{ r.failed ? 'F' : r.counted ? r.index : '×' }}</td>
       </ng-container>
       <ng-container matColumnDef="total">
         <th mat-header-cell *matHeaderCellDef>Total</th>

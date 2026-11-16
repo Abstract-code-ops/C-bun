@@ -1,11 +1,13 @@
 import { Ac as Injector, Ca as ɵɵclassProp, Da as ɵɵconditionalCreate, Dr as ViewEncapsulation, En as ElementRef, In as Input, O as booleanAttribute, Rc as NgZone, Sa as ɵɵclassMap, Ta as ɵɵconditional, Wi as setClassMetadata, X as input, _c as DOCUMENT, ao as ɵɵdefineNgModule, ar as RendererFactory2, ca as ɵɵInheritDefinitionFeature, cn as Component, cs as ɵɵprojectionDef, da as ɵɵadvance, dl as inject, dr as Service, io as ɵɵdefineDirective, ir as Renderer2, jl as ɵɵdefineInjector, kc as InjectionToken, lo as ɵɵdomElement, mo as ɵɵdomElementStart, po as ɵɵdomElementEnd, qn as NgModule, ro as ɵɵdefineComponent, rt as numberAttribute, so as ɵɵdefineService, ss as ɵɵprojection, wn as Directive, ya as ɵɵattribute } from "./core-Drq8OHIF.js";
-import { c as _getEventTarget, i as _CdkPrivateStyleLoader, o as FocusMonitor, t as _StructuralStylesLoader } from "./_structural-styles-chunk-DwBzbURy.js";
-import "./private-Cvt9Ifvt.js";
+import { a as _getEventTarget, r as FocusMonitor } from "./a11y-DrflCuhg.js";
 import { t as Platform } from "./_platform-chunk-BC1b4awg.js";
-import { i as defaultRippleAnimationConfig, r as RippleRenderer, t as MAT_RIPPLE_GLOBAL_OPTIONS } from "./_ripple-chunk-DCp1nURb.js";
+import { t as _CdkPrivateStyleLoader } from "./_style-loader-chunk-Datluc9o.js";
+import "./private-Cvt9Ifvt.js";
+import "./platform-GNlwN2T0.js";
 import { t as _animationsDisabled } from "./_animation-chunk-C2_8xCNW.js";
+import { a as defaultRippleAnimationConfig, i as RippleRenderer, n as MAT_RIPPLE_GLOBAL_OPTIONS, t as MatRippleModule } from "./_ripple-module-chunk-Cs5mTVuv.js";
+import { t as _StructuralStylesLoader } from "./_structural-styles-chunk-BAZGhWQE.js";
 import { t as BidiModule } from "./bidi-BmqnMbM4.js";
-import { t as MatRippleModule } from "./_ripple-module-chunk-CjPJhvJQ.js";
 // ../../node_modules/.pnpm/@angular+material@22.2.7_4f6723b46a482e1b97215c4fcb9843d2/node_modules/@angular/material/fesm2022/_ripple-loader-chunk.mjs
 var eventListenerOptions = { capture: true };
 var rippleInteractionEvents = [

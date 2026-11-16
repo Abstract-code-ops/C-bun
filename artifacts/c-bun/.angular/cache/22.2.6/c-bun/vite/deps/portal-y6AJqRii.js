@@ -370,4 +370,4 @@ var PortalModule = class PortalModule {
 		}]
 	}], null, null);
 })();
-export { DomPortalOutlet as a, ComponentPortal as i, CdkPortal as n, PortalModule as o, CdkPortalOutlet as r, TemplatePortal as s, BasePortalOutlet as t };
+export { PortalModule as a, DomPortalOutlet as i, CdkPortalOutlet as n, TemplatePortal as o, ComponentPortal as r, BasePortalOutlet as t };

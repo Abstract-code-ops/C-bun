@@ -1,23 +1,12 @@
+import { t as BidiModule } from "./bidi-BmqnMbM4.js";
 import { Ac as Injector, Ca as ɵɵclassProp, Dr as ViewEncapsulation, En as ElementRef, In as Input, Rc as NgZone, Wi as setClassMetadata, ao as ɵɵdefineNgModule, cn as Component, dl as inject, io as ɵɵdefineDirective, jl as ɵɵdefineInjector, kc as InjectionToken, qn as NgModule, ro as ɵɵdefineComponent, wn as Directive } from "./core-Drq8OHIF.js";
-import { c as _getEventTarget, i as _CdkPrivateStyleLoader, l as isFakeMousedownFromScreenReader, s as normalizePassiveListenerOptions, u as isFakeTouchstartFromScreenReader } from "./_structural-styles-chunk-DwBzbURy.js";
 import { t as Platform } from "./_platform-chunk-BC1b4awg.js";
+import { t as _CdkPrivateStyleLoader } from "./_style-loader-chunk-Datluc9o.js";
+import "./platform-GNlwN2T0.js";
+import { a as _getEventTarget, i as normalizePassiveListenerOptions, o as isFakeMousedownFromScreenReader, s as isFakeTouchstartFromScreenReader } from "./a11y-DrflCuhg.js";
 import { n as coerceElement } from "./_element-chunk-BK-CYO5F.js";
 import "./private-Cvt9Ifvt.js";
 import { t as _animationsDisabled } from "./_animation-chunk-C2_8xCNW.js";
-// ../../node_modules/.pnpm/@angular+cdk@22.2.7_31575fdcd76c2461da240d509d191da3/node_modules/@angular/cdk/fesm2022/platform.mjs
-var PlatformModule = class PlatformModule {
-	static ɵfac = function PlatformModule_Factory(__ngFactoryType__) {
-		return new (__ngFactoryType__ || PlatformModule)();
-	};
-	static ɵmod = /*@__PURE__*/ ɵɵdefineNgModule({ type: PlatformModule });
-	static ɵinj = /*@__PURE__*/ ɵɵdefineInjector({});
-};
-(() => {
-	(typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(PlatformModule, [{
-		type: NgModule,
-		args: [{}]
-	}], null, null);
-})();
 // ../../node_modules/.pnpm/@angular+material@22.2.7_4f6723b46a482e1b97215c4fcb9843d2/node_modules/@angular/material/fesm2022/_ripple-chunk.mjs
 var RippleState;
 (function(RippleState) {
@@ -485,4 +474,25 @@ var MatRipple = class MatRipple {
 		}]
 	});
 })();
-export { defaultRippleAnimationConfig as i, MatRipple as n, RippleRenderer as r, MAT_RIPPLE_GLOBAL_OPTIONS as t };
+// ../../node_modules/.pnpm/@angular+material@22.2.7_4f6723b46a482e1b97215c4fcb9843d2/node_modules/@angular/material/fesm2022/_ripple-module-chunk.mjs
+var MatRippleModule = class MatRippleModule {
+	static ɵfac = function MatRippleModule_Factory(__ngFactoryType__) {
+		return new (__ngFactoryType__ || MatRippleModule)();
+	};
+	static ɵmod = /*@__PURE__*/ ɵɵdefineNgModule({
+		type: MatRippleModule,
+		imports: [MatRipple],
+		exports: [MatRipple, BidiModule]
+	});
+	static ɵinj = /*@__PURE__*/ ɵɵdefineInjector({ imports: [BidiModule] });
+};
+(() => {
+	(typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(MatRippleModule, [{
+		type: NgModule,
+		args: [{
+			imports: [MatRipple],
+			exports: [MatRipple, BidiModule]
+		}]
+	}], null, null);
+})();
+export { defaultRippleAnimationConfig as a, RippleRenderer as i, MAT_RIPPLE_GLOBAL_OPTIONS as n, MatRipple as r, MatRippleModule as t };

@@ -1245,4 +1245,4 @@ var ScrollingModule = class ScrollingModule {
 		}]
 	}], null, null);
 })();
-export { ViewportRuler as a, DataSource as c, ScrollingModule as i, isDataSource as l, CdkScrollable as n, _RecycleViewRepeaterStrategy as o, ScrollDispatcher as r, _ViewRepeaterOperation as s, CDK_VIRTUAL_SCROLL_VIEWPORT as t, supportsScrollBehavior as u };
+export { _RecycleViewRepeaterStrategy as a, isDataSource as c, ViewportRuler as i, supportsScrollBehavior as l, ScrollDispatcher as n, _ViewRepeaterOperation as o, ScrollingModule as r, DataSource as s, CDK_VIRTUAL_SCROLL_VIEWPORT as t };

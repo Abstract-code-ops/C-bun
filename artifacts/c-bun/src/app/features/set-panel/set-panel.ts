@@ -9,6 +9,7 @@ import { RepTable } from '../../shared/rep-table/rep-table';
 import { ExerciseConfig } from '../../core/exercises';
 import { SetRecorder } from '../../core/set-recorder';
 import { Store } from '../../core/store';
+import { SetRecord, countedReps } from '../../core/models';
 
 @Component({
   selector: 'app-set-panel',
@@ -43,8 +44,7 @@ import { Store } from '../../core/store';
             <span>{{ clock(rec.elapsedSec()) }}</span>
             <strong>{{ liveCount() }} reps</strong>
           </div>
-          <app-motion-chart [points]="rec.livePoints()" [windowMs]="12000"
-                            [thresholds]="exercise().thresholds" [reps]="rec.reps()" />
+          <app-motion-chart [points]="rec.livePoints()" [windowMs]="15000" [nowMs]="rec.liveNowMs()" [segments]="rec.liveSegments()" [thresholds]="exercise().thresholds" [reps]="rec.reps()" />
           <button mat-flat-button (click)="rec.end()"><mat-icon>stop</mat-icon> End set</button>
         }
         @case ('finished') {
@@ -60,8 +60,9 @@ import { Store } from '../../core/store';
             }
           }
           @if (rec.result(); as r) {
-            <app-motion-chart [points]="r.trace" [thresholds]="exercise().thresholds" [reps]="r.reps" />
-          }
+  @if (endText(r); as why) { <p class="note">{{ why }}</p> }
+  <app-motion-chart [points]="r.trace" [segments]="r.segments ?? []"     [thresholds]="exercise().thresholds" [reps]="r.reps" />
+}
           <div class="actions">
             <button mat-flat-button (click)="save(false)"><mat-icon>save</mat-icon> Save set</button>
             @if (rec.mode() === 'max') {
@@ -134,6 +135,17 @@ export class SetPanel {
       'OK',
       { duration: err ? 5000 : 2500 },
     );
+  }
+
+  protected endText(r: SetRecord): string {
+    const n = countedReps(r);
+    switch (r.endReason) {
+      case 'failure': return `Mechanical failure on rep ${n + 1}: movement stalled.`;
+      case 'rest': return 'Ended: rested too long at the top.';
+      case 'lost': return 'Ended: pose was lost for too long.';
+      case 'timeout': return 'Ended: no movement detected.';
+      default: return '';
+    }
   }
 
   protected sec(ms: number): string { return (ms / 1000).toFixed(1) + 's'; }

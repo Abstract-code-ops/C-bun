@@ -1,15 +1,17 @@
 import { $n as Output, $o as ɵɵloadQuery, Ac as Injector, Ao as ɵɵgetCurrentView, Bl as ɵɵrestoreView, Ca as ɵɵclassProp, Cc as EventEmitter, Co as ɵɵelementStart, Da as ɵɵconditionalCreate, Dr as ViewEncapsulation, En as ElementRef, Er as ViewContainerRef, Gs as ɵɵtemplate, In as Input, Mr as afterNextRender, O as booleanAttribute, Qo as ɵɵlistener, Rc as NgZone, S as ViewChild, So as ɵɵelementEnd, Ta as ɵɵconditional, Tl as signal, Wi as setClassMetadata, Ys as ɵɵtextInterpolate1, _c as DOCUMENT, an as ChangeDetectionStrategy, ao as ɵɵdefineNgModule, ar as RendererFactory2, ca as ɵɵInheritDefinitionFeature, cn as Component, da as ɵɵadvance, dl as inject, dr as Service, es as ɵɵnextContext, fc as ANIMATION_MODULE_TYPE, io as ɵɵdefineDirective, ir as Renderer2, jl as ɵɵdefineInjector, kc as InjectionToken, la as ɵɵNgOnChangesFeature, qn as NgModule, qs as ɵɵtext, qt as untracked, r as ChangeDetectorRef, ro as ɵɵdefineComponent, so as ɵɵdefineService, tn as ApplicationRef, uc as ɵɵviewQuery, vo as ɵɵelement, vr as TemplateRef, wn as Directive, xc as EnvironmentInjector, xs as ɵɵqueryRefresh, ya as ɵɵattribute, zl as ɵɵresetView } from "./core-Drq8OHIF.js";
-import { c as _getEventTarget, i as _CdkPrivateStyleLoader, n as LiveAnnouncer } from "./_structural-styles-chunk-DwBzbURy.js";
+import { a as _getEventTarget, t as LiveAnnouncer } from "./a11y-DrflCuhg.js";
 import { a as coerceArray, i as BreakpointObserver, r as Breakpoints, t as _animationsDisabled } from "./_animation-chunk-C2_8xCNW.js";
 import { Nt as Location } from "./common-D0y4V-dN.js";
 import { t as Platform } from "./_platform-chunk-BC1b4awg.js";
+import { t as _CdkPrivateStyleLoader } from "./_style-loader-chunk-Datluc9o.js";
 import { Qn as Subject, Xt as filter, g as takeUntil, h as takeWhile, jn as of, ur as Subscription } from "./esm5-DNszYheg.js";
-import { a as ViewportRuler, i as ScrollingModule, r as ScrollDispatcher, u as supportsScrollBehavior } from "./scrolling-DY4-EJYl.js";
-import { n as hasModifierKey, t as _IdGenerator } from "./_id-generator-chunk-BJDTePEP.js";
+import { i as ViewportRuler, l as supportsScrollBehavior, n as ScrollDispatcher, r as ScrollingModule } from "./scrolling-CUXfUIBM.js";
+import { t as _IdGenerator } from "./_id-generator-chunk-DzNwRTWf.js";
 import { i as Directionality, t as BidiModule } from "./bidi-BmqnMbM4.js";
-import { a as DomPortalOutlet, i as ComponentPortal, o as PortalModule, r as CdkPortalOutlet, s as TemplatePortal, t as BasePortalOutlet } from "./portal-DNczDpCq.js";
-import { i as MatButtonModule, r as MatButton } from "./button-6R8O1-9u.js";
-import "./_ripple-chunk-DCp1nURb.js";
+import { a as PortalModule, i as DomPortalOutlet, n as CdkPortalOutlet, o as TemplatePortal, r as ComponentPortal, t as BasePortalOutlet } from "./portal-y6AJqRii.js";
+import { t as hasModifierKey } from "./keycodes-BPdrjHUb.js";
+import { i as MatButtonModule, r as MatButton } from "./button-hrw9L8E8.js";
+import "./platform-GNlwN2T0.js";
 import "./private-Cvt9Ifvt.js";
 // ../../node_modules/.pnpm/@angular+cdk@22.2.7_31575fdcd76c2461da240d509d191da3/node_modules/@angular/cdk/fesm2022/_test-environment-chunk.mjs
 function _isTestEnvironment() {

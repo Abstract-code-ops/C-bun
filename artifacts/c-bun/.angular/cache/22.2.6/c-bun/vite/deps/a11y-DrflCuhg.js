@@ -1,7 +1,8 @@
-import { $n as Output, Ac as Injector, Cc as EventEmitter, Dr as ViewEncapsulation, En as ElementRef, In as Input, M as createComponent, Mr as afterNextRender, O as booleanAttribute, Rc as NgZone, Wi as setClassMetadata, _c as DOCUMENT, ao as ɵɵdefineNgModule, ar as RendererFactory2, cn as Component, dl as inject, dr as Service, io as ɵɵdefineDirective, jl as ɵɵdefineInjector, kc as InjectionToken, la as ɵɵNgOnChangesFeature, pc as APP_ID, qn as NgModule, ro as ɵɵdefineComponent, so as ɵɵdefineService, tn as ApplicationRef, wn as Directive, xc as EnvironmentInjector } from "./core-Drq8OHIF.js";
+import { $n as Output, Ac as Injector, Cc as EventEmitter, En as ElementRef, In as Input, Mr as afterNextRender, O as booleanAttribute, Rc as NgZone, Wi as setClassMetadata, _c as DOCUMENT, ao as ɵɵdefineNgModule, ar as RendererFactory2, dl as inject, dr as Service, io as ɵɵdefineDirective, jl as ɵɵdefineInjector, kc as InjectionToken, la as ɵɵNgOnChangesFeature, pc as APP_ID, qn as NgModule, so as ɵɵdefineService, wn as Directive } from "./core-Drq8OHIF.js";
 import { Qn as Subject, T as skip, Tt as debounceTime, Xt as filter, Zn as BehaviorSubject, g as takeUntil, gt as distinctUntilChanged, jn as of, rr as Observable, vn as map } from "./esm5-DNszYheg.js";
 import { t as Platform } from "./_platform-chunk-BC1b4awg.js";
 import { n as coerceElement, r as coerceNumberProperty } from "./_element-chunk-BK-CYO5F.js";
+import { t as _CdkPrivateStyleLoader } from "./_style-loader-chunk-Datluc9o.js";
 import { n as _setInnerHtml, t as _VisuallyHiddenLoader } from "./private-Cvt9Ifvt.js";
 import { i as BreakpointObserver } from "./_animation-chunk-C2_8xCNW.js";
 import { r as DomSanitizer } from "./platform-browser-DmlO2Zxc.js";
@@ -378,42 +379,6 @@ var CdkMonitorFocus = class CdkMonitorFocus {
 			exportAs: "cdkMonitorFocus"
 		}]
 	}], null, { cdkFocusChange: [{ type: Output }] });
-})();
-// ../../node_modules/.pnpm/@angular+cdk@22.2.7_31575fdcd76c2461da240d509d191da3/node_modules/@angular/cdk/fesm2022/_style-loader-chunk.mjs
-var appsWithLoaders = /* @__PURE__ */ new WeakMap();
-var _CdkPrivateStyleLoader = class _CdkPrivateStyleLoader {
-	_appRef;
-	_injector = inject(Injector);
-	_environmentInjector = inject(EnvironmentInjector);
-	load(loader) {
-		const appRef = this._appRef = this._appRef || this._injector.get(ApplicationRef);
-		let data = appsWithLoaders.get(appRef);
-		if (!data) {
-			data = {
-				loaders: /* @__PURE__ */ new Set(),
-				refs: []
-			};
-			appsWithLoaders.set(appRef, data);
-			appRef.onDestroy(() => {
-				appsWithLoaders.get(appRef)?.refs.forEach((ref) => ref.destroy());
-				appsWithLoaders.delete(appRef);
-			});
-		}
-		if (!data.loaders.has(loader)) {
-			data.loaders.add(loader);
-			data.refs.push(createComponent(loader, { environmentInjector: this._environmentInjector }));
-		}
-	}
-	static ɵfac = function _CdkPrivateStyleLoader_Factory(__ngFactoryType__) {
-		return new (__ngFactoryType__ || _CdkPrivateStyleLoader)();
-	};
-	static ɵprov = /*@__PURE__*/ ɵɵdefineService({
-		token: _CdkPrivateStyleLoader,
-		factory: _CdkPrivateStyleLoader.ɵfac
-	});
-};
-(() => {
-	(typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(_CdkPrivateStyleLoader, [{ type: Service }], null, null);
 })();
 // ../../node_modules/.pnpm/@angular+cdk@22.2.7_31575fdcd76c2461da240d509d191da3/node_modules/@angular/cdk/fesm2022/observers.mjs
 function shouldIgnoreRecord(record) {
@@ -1492,30 +1457,4 @@ var ConfigurableFocusTrapFactory = class ConfigurableFocusTrapFactory {
 (() => {
 	(typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ConfigurableFocusTrapFactory, [{ type: Service }], () => [], null);
 })();
-// ../../node_modules/.pnpm/@angular+material@22.2.7_4f6723b46a482e1b97215c4fcb9843d2/node_modules/@angular/material/fesm2022/_structural-styles-chunk.mjs
-var _StructuralStylesLoader = class _StructuralStylesLoader {
-	static ɵfac = function _StructuralStylesLoader_Factory(__ngFactoryType__) {
-		return new (__ngFactoryType__ || _StructuralStylesLoader)();
-	};
-	static ɵcmp = /*@__PURE__*/ ɵɵdefineComponent({
-		type: _StructuralStylesLoader,
-		selectors: [["structural-styles"]],
-		decls: 0,
-		vars: 0,
-		template: function _StructuralStylesLoader_Template(rf, ctx) {},
-		styles: [".mat-focus-indicator {\n  position: relative;\n}\n.mat-focus-indicator::before {\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  position: absolute;\n  box-sizing: border-box;\n  pointer-events: none;\n  display: var(--%NS%mat-focus-indicator-display, none);\n  border-width: var(--%NS%mat-focus-indicator-border-width, 3px);\n  border-style: var(--%NS%mat-focus-indicator-border-style, solid);\n  border-color: var(--%NS%mat-focus-indicator-border-color, transparent);\n  border-radius: var(--%NS%mat-focus-indicator-border-radius, 4px);\n}\n.mat-focus-indicator:focus-visible::before {\n  content: \"\";\n}\n\n@media (forced-colors: active) {\n  html {\n    --%NS%mat-focus-indicator-display: block;\n    --%NS%mat-focus-indicator-fallback-border-style: none;\n  }\n}\n"],
-		encapsulation: 2
-	});
-};
-(() => {
-	(typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(_StructuralStylesLoader, [{
-		type: Component,
-		args: [{
-			selector: "structural-styles",
-			encapsulation: ViewEncapsulation.None,
-			template: "",
-			styles: [".mat-focus-indicator {\n  position: relative;\n}\n.mat-focus-indicator::before {\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  position: absolute;\n  box-sizing: border-box;\n  pointer-events: none;\n  display: var(--mat-focus-indicator-display, none);\n  border-width: var(--mat-focus-indicator-border-width, 3px);\n  border-style: var(--mat-focus-indicator-border-style, solid);\n  border-color: var(--mat-focus-indicator-border-color, transparent);\n  border-radius: var(--mat-focus-indicator-border-radius, 4px);\n}\n.mat-focus-indicator:focus-visible::before {\n  content: \"\";\n}\n\n@media (forced-colors: active) {\n  html {\n    --mat-focus-indicator-display: block;\n    --mat-focus-indicator-fallback-border-style: none;\n  }\n}\n"]
-		}]
-	}], null, null);
-})();
-export { CdkMonitorFocus as a, _getEventTarget as c, _CdkPrivateStyleLoader as i, isFakeMousedownFromScreenReader as l, LiveAnnouncer as n, FocusMonitor as o, CdkObserveContent as r, normalizePassiveListenerOptions as s, _StructuralStylesLoader as t, isFakeTouchstartFromScreenReader as u };
+export { _getEventTarget as a, normalizePassiveListenerOptions as i, ObserversModule as n, isFakeMousedownFromScreenReader as o, FocusMonitor as r, isFakeTouchstartFromScreenReader as s, LiveAnnouncer as t };

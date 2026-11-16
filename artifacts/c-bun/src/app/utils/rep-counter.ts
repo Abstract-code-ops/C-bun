@@ -3,15 +3,18 @@ export type Phase = 'top' | 'descending' | 'bottom' | 'ascending';
 export interface Thresholds {
   topEnter: number;
   topExit: number;
-  bottomEnter: number;
+  bottomEnter: number;   // loose trigger for the bottom state (uses the smoothed angle)
   bottomExit: number;
+  /** Optional: the raw (unsmoothed) angle must reach at least this low for a rep to count. */
+  depthTarget?: number;
 }
 
 export interface RepEvent {
   counted: boolean;
-  gateMissed: boolean; // reached depth, but the extra check (e.g. chin over bar) failed
+  gateMissed: boolean;   // deep enough, but the extra check (chin over bar) failed
+  tooShallow: boolean;   // reached the bottom zone, but not the depth target
   index: number;
-  minAngle: number;
+  minAngle: number;      // raw minimum during the rep
   downMs: number;
   upMs: number;
   totalMs: number;
@@ -21,7 +24,7 @@ export interface RepEvent {
 export class RepCounter {
   phase: Phase = 'top';
   reps = 0;
-  private minAngle = 180;
+  private rawMin = 180;
   private startTs = 0;
   private bottomTs = 0;
   private ascendTs = 0;
@@ -33,29 +36,31 @@ export class RepCounter {
 
   abort(): void {
     this.phase = 'top';
-    this.minAngle = 180;
+    this.rawMin = 180;
     this.startTs = this.bottomTs = this.ascendTs = 0;
     this.gateMet = false;
   }
 
-  /** gate: optional extra condition; must be true at some point during the rep. */
-  update(angle: number, t: number, gate = true): RepEvent | null {
+  /** angle: smoothed (drives the state machine). raw: unsmoothed (judges depth). */
+  update(angle: number, t: number, gate = true, raw = angle): RepEvent | null {
     const th = this.th;
-    if (gate && this.phase !== 'top') this.gateMet = true;
+    if (this.phase !== 'top') {
+      this.rawMin = Math.min(this.rawMin, raw);
+      if (gate) this.gateMet = true;
+    }
 
     switch (this.phase) {
       case 'top':
         if (angle < th.topExit) {
           this.phase = 'descending';
           this.startTs = t;
-          this.minAngle = angle;
+          this.rawMin = raw;
           this.bottomTs = this.ascendTs = 0;
           this.gateMet = false;
         }
         break;
 
       case 'descending':
-        this.minAngle = Math.min(this.minAngle, angle);
         if (angle <= th.bottomEnter) {
           this.phase = 'bottom';
           this.bottomTs = t;
@@ -66,7 +71,6 @@ export class RepCounter {
         break;
 
       case 'bottom':
-        this.minAngle = Math.min(this.minAngle, angle);
         if (angle > th.bottomExit) {
           this.phase = 'ascending';
           this.ascendTs = t;
@@ -74,7 +78,6 @@ export class RepCounter {
         break;
 
       case 'ascending':
-        this.minAngle = Math.min(this.minAngle, angle);
         if (angle <= th.bottomEnter) {
           this.phase = 'bottom';
         } else if (angle >= th.topEnter) {
@@ -86,16 +89,18 @@ export class RepCounter {
     return null;
   }
 
-  private finish(reachedDepth: boolean, t: number): RepEvent {
-    const counted = reachedDepth && this.gateMet;
+  private finish(reachedBottom: boolean, t: number): RepEvent {
+    const deep = this.th.depthTarget === undefined || this.rawMin <= this.th.depthTarget;
+    const counted = reachedBottom && deep && this.gateMet;
     if (counted) this.reps++;
     return {
       counted,
-      gateMissed: reachedDepth && !this.gateMet,
+      gateMissed: reachedBottom && deep && !this.gateMet,
+      tooShallow: reachedBottom && !deep,
       index: this.reps,
-      minAngle: this.minAngle,
-      downMs: reachedDepth ? this.bottomTs - this.startTs : 0,
-      upMs: reachedDepth ? t - this.ascendTs : 0,
+      minAngle: this.rawMin,
+      downMs: reachedBottom ? this.bottomTs - this.startTs : 0,
+      upMs: reachedBottom ? t - this.ascendTs : 0,
       totalMs: t - this.startTs,
       endedAt: t,
     };

@@ -1,0 +1,26 @@
+.top { background: transparent; padding: 0 8px 0 16px; }
+.title { font-weight: 700; font-size: 20px; letter-spacing: .01em; }
+.spacer { flex: 1; }
+
+main { display: block; padding-bottom: 88px; }
+
+.bottom {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+  background: var(--mat-sys-surface-container, #1e1e1e);
+  border-top: 1px solid var(--mat-sys-outline-variant, #444);
+}
+.bottom button {
+  background: none; border: 0; cursor: pointer; color: var(--mat-sys-on-surface-variant, #aaa);
+  display: flex; flex-direction: column; align-items: center; gap: 4px; font: inherit; font-size: 12px;
+}
+.bottom .pillbox {
+  width: 56px; height: 30px; border-radius: 15px; display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+.bottom button.active { color: var(--mat-sys-on-surface, #fff); font-weight: 600; }
+.bottom button.active .pillbox {
+  background: var(--mat-sys-primary-container, #2b4a7a);
+  color: var(--mat-sys-on-primary-container, #fff);
+}
