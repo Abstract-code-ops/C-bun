@@ -1,4 +1,4 @@
-import { _ as FORM_FIELD, c as MatFormField, d as MatLabel, f as MatPrefix, l as MatFormFieldControl, p as MatSuffix, r as MAT_FORM_FIELD, s as MatError, t as MatFormFieldModule, u as MatHint, v as coerceBooleanProperty } from "./form-field-j17Wfz3Q.js";
+import { _ as coerceBooleanProperty, c as MatFormField, d as MatLabel, f as MatPrefix, l as MatFormFieldControl, p as MatSuffix, r as MAT_FORM_FIELD, s as MatError, t as MatFormFieldModule, u as MatHint } from "./form-field-BFdHW7wK.js";
 import { t as getSupportedInputTypes } from "./platform-GNlwN2T0.js";
 import { AutofillMonitor, TextFieldModule } from "./@angular_cdk_text-field.js";
 import { t as Platform } from "./_platform-chunk-BC1b4awg.js";
@@ -6,6 +6,7 @@ import { Ca as ɵɵclassProp, En as ElementRef, In as Input, O as booleanAttribu
 import "./a11y-DrflCuhg.js";
 import { a as NgForm, i as NgControl, o as Validators, t as FormGroupDirective } from "./forms-BgcEHDKy.js";
 import { t as _IdGenerator } from "./_id-generator-chunk-DzNwRTWf.js";
+import { t as FORM_FIELD } from "./signals-B7hjxOxq.js";
 import { Qn as Subject } from "./esm5-DNszYheg.js";
 import { t as BidiModule } from "./bidi-BmqnMbM4.js";
 import "./_animation-chunk-C2_8xCNW.js";

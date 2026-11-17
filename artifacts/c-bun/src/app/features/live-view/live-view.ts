@@ -1,6 +1,6 @@
 import {
   Component, ElementRef, NgZone, OnDestroy,
-  computed, inject, signal, viewChild,
+  computed, inject, untracked, effect, signal, viewChild,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -13,12 +13,16 @@ import { ExerciseTracker } from '../../core/exercise-tracker';
 import { EXERCISES, ExerciseConfig } from '../../core/exercises';
 import { SetPanel } from '../set-panel/set-panel';
 import { SetRecorder } from '../../core/set-recorder';
+import { PlanSession } from '../../core/plan-session';
+import { PlanBanner } from '../plan-banner/plan-banner';
+import { Showcase } from '../../core/showcase';
+import { ShowcasePanel } from '../showcase-panel/showcase-panel';
 
 @Component({
   selector: 'app-live-view',
   templateUrl: './live-view.html',
   styleUrl: './live-view.css',
-  imports: [SetPanel, MatButtonModule, MatButtonToggleModule, MatIconModule, MatProgressBarModule],
+  imports: [SetPanel, MatButtonModule, MatButtonToggleModule, MatIconModule, MatProgressBarModule, PlanBanner, ShowcasePanel],
 })
 export class LiveView implements OnDestroy {
   private readonly camera = inject(Camera);
@@ -26,6 +30,9 @@ export class LiveView implements OnDestroy {
   private readonly zone = inject(NgZone);
   private readonly tracker = inject(ExerciseTracker);
   private readonly recorder = inject(SetRecorder);
+  private readonly session = inject(PlanSession);
+  private readonly showcase = inject(Showcase);
+  private lastLm: { x: number; y: number; visibility?: number }[] | null = null;
 
   private readonly videoRef = viewChild.required<ElementRef<HTMLVideoElement>>('video');
   private readonly canvasRef = viewChild.required<ElementRef<HTMLCanvasElement>>('canvas');
@@ -65,7 +72,14 @@ export class LiveView implements OnDestroy {
     this.exercise.set(ex);
     if (this.running()) this.tracker.start(ex); // restarts and resets the count
   }
-  
+
+  /** Plan asks for an exercise (new target, or rest finished): select it. */
+  protected readonly followPlan = effect(() => {
+    const req = this.session.requested();
+    const cfg = req && EXERCISES.find(e => e.id === req.ex);
+    if (cfg) untracked(() => { if (!this.locked()) this.selectExercise(cfg); });
+  });
+
   resetReps(): void { this.tracker.reset(); }
 
   async start(): Promise<void> {
@@ -74,6 +88,12 @@ export class LiveView implements OnDestroy {
       const [stream] = await Promise.all([this.camera.start(), this.pose.init()]);
       await this.attach(stream);
       this.running.set(true);
+      this.showcase.attach({
+        video: this.videoRef().nativeElement,
+        mirrored: () => this.mirrored(),
+        landmarks: () => this.lastLm,
+        exercise: () => this.exercise(),
+      });
       this.runLoop();
       this.tracker.start(this.exercise());
 
@@ -151,6 +171,7 @@ export class LiveView implements OnDestroy {
   }
 
   private draw(result: PoseLandmarkerResult | null): void {
+    this.lastLm = result?.landmarks[0] ?? null;
     const canvas = this.canvasRef().nativeElement;
     const ctx = canvas.getContext('2d')!;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -166,6 +187,7 @@ export class LiveView implements OnDestroy {
   }
 
   private teardown(): void {
+    this.showcase.detach();
     cancelAnimationFrame(this.raf);
     this.running.set(false);
     this.fps.set(0);

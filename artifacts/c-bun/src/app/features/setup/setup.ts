@@ -12,12 +12,13 @@ import { Store } from '../../core/store';
 import { ExerciseRow } from '../../shared/exercise-row/exercise-row';
 import { buildWeek } from '../../utils/plan-engine';
 import { EX_LABEL, formatDay, localIso } from '../../utils/plan-format';
+import { OfflineCard } from '../offline-card/offline-card';
 
 type Maxes = Record<PlanExerciseId, number>;
 
 @Component({
   selector: 'app-setup',
-  imports: [MatCardModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, ExerciseRow],
+  imports: [MatCardModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, ExerciseRow, OfflineCard],
   template: `
     @if (ps.plan(); as plan) {
       <mat-card class="card">
@@ -91,6 +92,7 @@ type Maxes = Record<PlanExerciseId, number>;
           </button>
         </mat-card-actions>
       </mat-card>
+      <app-offline-card />
     }
   `,
   styles: `

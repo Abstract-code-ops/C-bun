@@ -10,6 +10,8 @@ import { ExerciseConfig } from '../../core/exercises';
 import { SetRecorder } from '../../core/set-recorder';
 import { Store } from '../../core/store';
 import { SetRecord, countedReps } from '../../core/models';
+import { PlanSession } from '../../core/plan-session';
+
 
 @Component({
   selector: 'app-set-panel',
@@ -101,6 +103,7 @@ export class SetPanel {
   protected readonly rec = inject(SetRecorder);
   private readonly store = inject(Store);
   private readonly snack = inject(MatSnackBar);
+  private readonly session = inject(PlanSession);
 
   readonly exercise = input.required<ExerciseConfig>();
   readonly active = input(false);
@@ -128,10 +131,18 @@ export class SetPanel {
 
   protected save(asMax: boolean): void {
     const count = this.stats()?.reps ?? 0;
+    const result = this.rec.result();   // capture before save() clears it
+    const mode = this.rec.mode();
     this.rec.save(asMax);
+
+    const credited = !asMax && mode === 'free' && !!result
+      && this.session.onSaved(result, this.exercise().id);
+
     const err = this.store.error();
     this.snack.open(
-      err ?? (asMax ? `Saved as your max: ${count} reps` : 'Set saved'),
+      err ?? (asMax ? `Saved as your max: ${count} reps`
+            : credited ? 'Saved · counted toward today’s plan'
+            : 'Set saved'),
       'OK',
       { duration: err ? 5000 : 2500 },
     );

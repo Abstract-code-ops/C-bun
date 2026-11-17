@@ -10,7 +10,7 @@ import { t as _IdGenerator } from "./_id-generator-chunk-DzNwRTWf.js";
 import { i as Directionality, t as BidiModule } from "./bidi-BmqnMbM4.js";
 import { a as PortalModule, i as DomPortalOutlet, n as CdkPortalOutlet, o as TemplatePortal, r as ComponentPortal, t as BasePortalOutlet } from "./portal-y6AJqRii.js";
 import { t as hasModifierKey } from "./keycodes-BPdrjHUb.js";
-import { i as MatButtonModule, r as MatButton } from "./button-hrw9L8E8.js";
+import { i as MatButtonModule, r as MatButton } from "./button-KbicURXW.js";
 import "./platform-GNlwN2T0.js";
 import "./private-Cvt9Ifvt.js";
 // ../../node_modules/.pnpm/@angular+cdk@22.2.7_31575fdcd76c2461da240d509d191da3/node_modules/@angular/cdk/fesm2022/_test-environment-chunk.mjs

@@ -24,3 +24,7 @@ main { display: block; padding-bottom: 88px; }
   background: var(--mat-sys-primary-container, #2b4a7a);
   color: var(--mat-sys-on-primary-container, #fff);
 }
+.chip { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px;
+  font-size: 12px; font-weight: 600; background: var(--mat-sys-surface-container-high, #1b212d); }
+.chip mat-icon { font-size: 16px; width: 16px; height: 16px; }
+.chip.warn { color: var(--mat-sys-tertiary, #ffb300); }

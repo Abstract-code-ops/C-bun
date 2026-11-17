@@ -8,8 +8,9 @@ import { $n as Output, $o as ɵɵloadQuery, Ca as ɵɵclassProp, Cc as EventEmit
 import { r as NG_VALUE_ACCESSOR } from "./forms-BgcEHDKy.js";
 import { t as _IdGenerator } from "./_id-generator-chunk-DzNwRTWf.js";
 import { t as _StructuralStylesLoader } from "./_structural-styles-chunk-BAZGhWQE.js";
-import { r as MatRipple, t as MatRippleModule } from "./_ripple-module-chunk-Cs5mTVuv.js";
+import { n as MatRipple } from "./_ripple-chunk-Ce7CrpHW.js";
 import { t as _animationsDisabled } from "./_animation-chunk-C2_8xCNW.js";
+import { t as MatRippleModule } from "./_ripple-module-chunk-BYuoncZo.js";
 import "./platform-GNlwN2T0.js";
 // ../../node_modules/.pnpm/@angular+cdk@22.2.7_31575fdcd76c2461da240d509d191da3/node_modules/@angular/cdk/fesm2022/_selection-model-chunk.mjs
 var SelectionModel = class {

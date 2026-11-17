@@ -1,6 +1,6 @@
 import { Service, computed, effect, inject, signal, untracked } from '@angular/core';
 import { EXERCISES } from './exercises';
-import { SetRecord } from './models';
+import { SetRecord, countedReps } from './models';
 import { Nav } from './nav';
 import { PlanExerciseId } from './plan-models';
 import { PlanStore } from './plan-store';
@@ -69,16 +69,17 @@ export class PlanSession {
   }
 
   /** Called after a set is saved. Returns true when it was credited to the plan. */
-  onSaved(set: SetRecord): boolean {
+  /** Called after a set is saved. Returns true when it was credited to the plan. */
+  onSaved(set: SetRecord, exerciseId: string): boolean {
     const t = this.ps.next();
-    if (!this.active() || !t || set.mode === 'max' || set.exercise !== t.exercise) return false;
+    if (!this.active() || !t || exerciseId !== t.exercise) return false;
 
-    const cfg = EXERCISES.find(e => e.id === set.exercise);
+    const cfg = EXERCISES.find(e => e.id === exerciseId);
     const target = cfg ? (cfg.thresholds.depthTarget ?? cfg.thresholds.bottomEnter) : 0;
     const quality = cfg ? setQuality(set.reps, target).score : 0;
-    const doneReps = set.reps.filter(r => r.counted).length;
+    const doneReps = countedReps(set);
 
-    this.ps.completeSet(t, { doneReps, quality, recordId: set.id });
+    this.ps.completeSet(t, { doneReps, quality });
     this.lastResult.set({ doneReps, targetReps: t.targetReps });
 
     if (this.ps.next()) this.startRest(t.restSec);

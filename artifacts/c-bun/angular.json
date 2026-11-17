@@ -17,15 +17,18 @@
             "baseHref": "/",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "css",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": ["src/material-theme.scss", "src/styles.css"],
-            "outputPath": "dist/public"
-          },
+          "assets": [
+            { "glob": "**/*", "input": "public" },
+            { "glob": "**/*", "input": "node_modules/@mediapipe/tasks-vision/wasm", "output": "/mediapipe/wasm" }
+          ],
+          "styles": [
+            "node_modules/@fontsource/roboto/latin-300.css",
+            "node_modules/@fontsource/roboto/latin-400.css",
+            "node_modules/@fontsource/roboto/latin-500.css",
+            "node_modules/material-icons/iconfont/material-icons.css",
+            "src/material-theme.scss",
+            "src/styles.css"
+          ],
           "configurations": {
             "production": {
               "budgets": [
@@ -40,7 +43,8 @@
                   "maximumError": "12kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "serviceWorker": "ngsw-config.json",
             },
             "development": {
               "optimization": false,

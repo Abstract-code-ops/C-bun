@@ -30,6 +30,8 @@
 
 @if (busy()) { <mat-progress-bar mode="indeterminate" /> }
 
+<app-plan-banner />
+
 <div class="controls">
   @if (!running()) {
     <button mat-flat-button (click)="start()" [disabled]="busy()">
@@ -49,3 +51,5 @@
 </div>
 
 <app-set-panel [exercise]="exercise()" [active]="running()" />
+
+<app-showcase-panel />

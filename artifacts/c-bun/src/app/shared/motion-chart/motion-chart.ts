@@ -2,8 +2,8 @@ import { Component, ElementRef, computed, input, signal, viewChild } from '@angu
 import { RepRecord, Segment, TracePoint } from '../../core/models';
 import { Thresholds } from '../../utils/rep-counter';
 
-const W = 600, H = 340;
-const PL = 40, PR = 12, PT = 14, PB = 26;
+const W = 600, H = 460;
+const PL = 52, PR = 14, PT = 24, PB = 34;
 const PLOT_W = W - PL - PR, PLOT_H = H - PT - PB;
 const GAP_MS = 400;
 const MIN_SPAN_MS = 2000;
@@ -31,10 +31,10 @@ interface YRange { min: number; max: number; step: number }
 
       @for (g of yTicks(); track g.v) {
         <line [attr.x1]="PL" [attr.x2]="W - PR" [attr.y1]="g.y" [attr.y2]="g.y" class="grid" />
-        <text [attr.x]="PL - 6" [attr.y]="g.y + 4" class="lbl end">{{ g.v }}°</text>
+        <text [attr.x]="PL - 6" [attr.y]="g.y + 5" class="lbl end">{{ g.v }}°</text>
       }
       @for (t of xTicks(); track t.label) {
-        <text [attr.x]="t.x" [attr.y]="H - 8" class="lbl mid">{{ t.label }}</text>
+        <text [attr.x]="t.x" [attr.y]="H - 10" class="lbl mid">{{ t.label }}</text>
       }
 
       <g [attr.clip-path]="'url(#' + clipId + ')'">
@@ -51,19 +51,19 @@ interface YRange { min: number; max: number; step: number }
         @for (m of markers(); track m.key) {
           <line [attr.x1]="m.x" [attr.x2]="m.x" [attr.y1]="PT" [attr.y2]="PT + PLOT_H"
                 [attr.class]="'rep ' + m.cls" />
-          <text [attr.x]="m.x" [attr.y]="PT + 11" [attr.class]="'lbl mid ' + m.cls">{{ m.label }}</text>
+          <text [attr.x]="m.x" [attr.y]="PT + 17" [attr.class]="'lbl mid ' + m.cls">{{ m.label }}</text>
         }
         <path [attr.d]="path()" class="curve" />
       </g>
 
-      @if (lastDot(); as d) { <circle [attr.cx]="d.x" [attr.cy]="d.y" r="4" class="live-dot" /> }
+      @if (lastDot(); as d) { <circle [attr.cx]="d.x" [attr.cy]="d.y" r="6.5" class="live-dot" /> }
 
       @if (cursor(); as c) {
         <line [attr.x1]="c.x" [attr.x2]="c.x" [attr.y1]="PT" [attr.y2]="PT + PLOT_H" class="cursor" />
-        <circle [attr.cx]="c.x" [attr.cy]="c.y" r="4.5" class="cursor-dot" />
-        <rect [attr.x]="c.boxX" [attr.y]="c.boxY" [attr.width]="c.boxW" [attr.height]="c.boxH" rx="6" class="tip" />
+        <circle [attr.cx]="c.x" [attr.cy]="c.y" r="6.5" class="cursor-dot" />
+        <rect [attr.x]="c.boxX" [attr.y]="c.boxY" [attr.width]="c.boxW" [attr.height]="c.boxH" rx="8" class="tip" />
         @for (l of c.lines; track $index) {
-          <text [attr.x]="c.boxX + 8" [attr.y]="c.boxY + 16 + $index * 14" class="tiptext">{{ l }}</text>
+          <text [attr.x]="c.boxX + 8" [attr.y]="c.boxY + 20 + $index * 19" class="tiptext">{{ l }}</text>
         }
       }
     </svg>
@@ -88,25 +88,25 @@ interface YRange { min: number; max: number; step: number }
     :host { display: block; }
     svg { width: 100%; height: auto; display: block; background: #0e1116; border-radius: 10px;
           touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: crosshair; }
-    .grid { stroke: #ffffff1f; stroke-width: 1; }
-    .limit { stroke: #ffb300; stroke-width: 1; stroke-dasharray: 5 4; opacity: .8; }
-    .rep { stroke: #ffffff44; stroke-width: 1; stroke-dasharray: 2 3; }
+    .grid { stroke: #ffffff1f; stroke-width: 1.5; }
+    .limit { stroke: #ffb300; stroke-width: 2; stroke-dasharray: 8 6; opacity: .85; }
+    .rep { stroke: #ffffff44; stroke-width: 2; stroke-dasharray: 3 4; }
     .rep.partial { stroke: #ff4d4d88; }
-    .rep.failed { stroke: #ff4d4d; stroke-dasharray: none; stroke-width: 1.5; }
-    .curve { fill: none; stroke: #00e5a0; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
-    .lbl { fill: #ffffffaa; font: 11px system-ui; }
+    .rep.failed { stroke: #ff4d4d; stroke-dasharray: none; stroke-width: 3; }
+    .curve { fill: none; stroke: #00e5a0; stroke-width: 5; stroke-linejoin: round; stroke-linecap: round; }
+    .lbl { fill: #ffffffaa; font: 15px system-ui; }
     .lbl.failed { fill: #ff6b6b; font-weight: 700; }
     .end { text-anchor: end; }
     .mid { text-anchor: middle; }
     .band.rest { fill: #4aa3ff; opacity: .16; }
     .band.lost { fill: #ff4d4d; opacity: .22; }
     .band.stall { fill: #ffb300; opacity: .24; }
-    .bandlbl { fill: #ffffffbb; font: 10px system-ui; }
-    .live-dot { fill: #00e5a0; stroke: #0e1116; stroke-width: 2; }
-    .cursor { stroke: #ffffffaa; stroke-width: 1; }
-    .cursor-dot { fill: #fff; stroke: #00e5a0; stroke-width: 2; }
+    .bandlbl { fill: #ffffffbb; font: 14px system-ui; }
+    .live-dot { fill: #00e5a0; stroke: #0e1116; stroke-width: 3; }
+    .cursor { stroke: #ffffffaa; stroke-width: 1.5; }
+    .cursor-dot { fill: #fff; stroke: #00e5a0; stroke-width: 3; }
     .tip { fill: #1b2230; stroke: #ffffff33; }
-    .tiptext { fill: #fff; font: 11px system-ui; }
+    .tiptext { fill: #fff; font: 15px system-ui; }
     .bar { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
     .legend { display: flex; gap: 6px; flex-wrap: wrap; }
     .chip { font-size: 11px; padding: 2px 8px; border-radius: 999px; border: 1px solid; }

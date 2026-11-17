@@ -8,6 +8,8 @@ import { LiveView } from './features/live-view/live-view';
 import { PlanView } from './features/plan-view/plan-view';
 import { Setup } from './features/setup/setup';
 import { Today } from './features/today/today';
+import { Connectivity } from './core/connectivity';
+import { Updates } from './core/updates';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +19,8 @@ import { Today } from './features/today/today';
 })
 export class AppComponent {
   readonly nav = inject(Nav);
+  protected readonly conn = inject(Connectivity);
+  protected readonly updates = inject(Updates);
   readonly tabs: { id: View; icon: string; label: string }[] = [
     { id: 'today', icon: 'today', label: 'Today' },
     { id: 'plan', icon: 'calendar_month', label: 'Plan' },

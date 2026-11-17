@@ -5,9 +5,10 @@ import { t as _CdkPrivateStyleLoader } from "./_style-loader-chunk-Datluc9o.js";
 import "./private-Cvt9Ifvt.js";
 import "./platform-GNlwN2T0.js";
 import { t as _animationsDisabled } from "./_animation-chunk-C2_8xCNW.js";
-import { a as defaultRippleAnimationConfig, i as RippleRenderer, n as MAT_RIPPLE_GLOBAL_OPTIONS, t as MatRippleModule } from "./_ripple-module-chunk-Cs5mTVuv.js";
+import { i as defaultRippleAnimationConfig, r as RippleRenderer, t as MAT_RIPPLE_GLOBAL_OPTIONS } from "./_ripple-chunk-Ce7CrpHW.js";
 import { t as _StructuralStylesLoader } from "./_structural-styles-chunk-BAZGhWQE.js";
 import { t as BidiModule } from "./bidi-BmqnMbM4.js";
+import { t as MatRippleModule } from "./_ripple-module-chunk-BYuoncZo.js";
 // ../../node_modules/.pnpm/@angular+material@22.2.7_4f6723b46a482e1b97215c4fcb9843d2/node_modules/@angular/material/fesm2022/_ripple-loader-chunk.mjs
 var eventListenerOptions = { capture: true };
 var rippleInteractionEvents = [

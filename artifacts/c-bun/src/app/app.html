@@ -1,6 +1,8 @@
 <mat-toolbar class="top">
   <span class="title">Pose Coach</span>
   <span class="spacer"></span>
+  @if (!conn.online()) { <span class="chip warn"><mat-icon>cloud_off</mat-icon> Offline</span> }
+  @if (updates.ready()) { <button mat-button (click)="updates.reload()">Update</button> }
   <button mat-icon-button aria-label="Setup" (click)="nav.go('setup')">
     <mat-icon>{{ nav.view() === 'setup' ? 'settings' : 'tune' }}</mat-icon>
   </button>
