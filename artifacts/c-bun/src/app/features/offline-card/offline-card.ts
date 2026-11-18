@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, isDevMode } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -64,10 +64,11 @@ export class OfflineCard {
     .subscribe(() => { if (!this.info.packReady()) void this.info.refresh(); });
 
   protected readonly packText = computed(() => {
-    if (!this.updates.enabled) return 'Offline pack: only in the production build (not in dev mode).';
-    return this.info.packReady()
-      ? 'Offline pack ready: pose model and engine are cached.'
-      : 'Downloading offline pack (about 21 MB, first launch only)…';
+    if (this.info.packReady()) return 'Offline pack ready: pose model and engine are cached.';
+    if (!('serviceWorker' in navigator)) return 'This browser view has no service worker support. Open the app in Safari.';
+    if (isDevMode()) return 'Dev mode: the offline pack is only built in production.';
+    if (!this.updates.enabled) return 'Service worker is off. Check provideServiceWorker in main.ts.';
+    return 'Downloading offline pack (about 21 MB, first launch only)…';
   });
 
   protected readonly storageText = computed(() => {

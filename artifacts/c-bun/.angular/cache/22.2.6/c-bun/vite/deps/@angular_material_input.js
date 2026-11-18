@@ -1,15 +1,16 @@
-import { _ as coerceBooleanProperty, c as MatFormField, d as MatLabel, f as MatPrefix, l as MatFormFieldControl, p as MatSuffix, r as MAT_FORM_FIELD, s as MatError, t as MatFormFieldModule, u as MatHint } from "./form-field-BFdHW7wK.js";
-import { t as getSupportedInputTypes } from "./platform-GNlwN2T0.js";
+import { _ as coerceBooleanProperty, c as MatFormField, d as MatLabel, f as MatPrefix, l as MatFormFieldControl, p as MatSuffix, r as MAT_FORM_FIELD, s as MatError, t as MatFormFieldModule, u as MatHint } from "./form-field-C16iQHgJ.js";
+import { t as getSupportedInputTypes } from "./platform-CxEApJTb.js";
 import { AutofillMonitor, TextFieldModule } from "./@angular_cdk_text-field.js";
-import { t as Platform } from "./_platform-chunk-BC1b4awg.js";
-import { Ca as ɵɵclassProp, En as ElementRef, In as Input, O as booleanAttribute, Qo as ɵɵlistener, Rc as NgZone, Wi as setClassMetadata, ao as ɵɵdefineNgModule, dl as inject, dr as Service, go as ɵɵdomProperty, il as effect, io as ɵɵdefineDirective, ir as Renderer2, jl as ɵɵdefineInjector, kc as InjectionToken, la as ɵɵNgOnChangesFeature, ml as isSignal, qn as NgModule, so as ɵɵdefineService, ua as ɵɵProvidersFeature, wn as Directive, ya as ɵɵattribute } from "./core-Drq8OHIF.js";
-import "./a11y-DrflCuhg.js";
-import { a as NgForm, i as NgControl, o as Validators, t as FormGroupDirective } from "./forms-BgcEHDKy.js";
-import { t as _IdGenerator } from "./_id-generator-chunk-DzNwRTWf.js";
-import { t as FORM_FIELD } from "./signals-B7hjxOxq.js";
+import { Ai as setClassMetadata, Ga as ɵɵdefineNgModule, Nn as NgModule, O as booleanAttribute, Ro as ɵɵlistener, Sn as Input, Wa as ɵɵdefineDirective, Wn as Renderer2, Xi as ɵɵProvidersFeature, Yi as ɵɵNgOnChangesFeature, Zn as Service, aa as ɵɵattribute, fn as ElementRef, la as ɵɵclassProp, no as ɵɵdomProperty, qa as ɵɵdefineService, un as Directive } from "./core-DpE0Bu0A.js";
+import { t as Platform } from "./_platform-chunk-0WCaIQ9Q.js";
+import "./a11y-BhSY2Gwq.js";
+import { a as NgForm, i as NgControl, o as Validators, t as FormGroupDirective } from "./forms-D_qTf2MM.js";
+import { t as FORM_FIELD } from "./signals-BkWUlKWo.js";
+import { t as _IdGenerator } from "./_id-generator-chunk-ngmWyetU.js";
 import { Qn as Subject } from "./esm5-DNszYheg.js";
-import { t as BidiModule } from "./bidi-BmqnMbM4.js";
-import "./_animation-chunk-C2_8xCNW.js";
+import { Jr as isSignal, U as InjectionToken, et as NgZone, ua as ɵɵdefineInjector, wr as inject, xn as effect } from "./_resource-chunk-CQPGmI6B.js";
+import { t as BidiModule } from "./bidi-BldOeCYw.js";
+import "./_animation-chunk-q3l5j1EA.js";
 // ../../node_modules/.pnpm/@angular+material@22.2.7_4f6723b46a482e1b97215c4fcb9843d2/node_modules/@angular/material/fesm2022/_input-value-accessor-chunk.mjs
 var MAT_INPUT_VALUE_ACCESSOR = new InjectionToken("MAT_INPUT_VALUE_ACCESSOR");
 // ../../node_modules/.pnpm/@angular+material@22.2.7_4f6723b46a482e1b97215c4fcb9843d2/node_modules/@angular/material/fesm2022/_error-options-chunk.mjs
