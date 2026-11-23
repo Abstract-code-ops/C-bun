@@ -1,17 +1,17 @@
 import { Fn as forwardRef, I as EventEmitter, U as InjectionToken, W as Injector, _a as ɵɵnamespaceSVG, ua as ɵɵdefineInjector, wr as inject } from "./_resource-chunk-CQPGmI6B.js";
 import { Ai as setClassMetadata, Ga as ɵɵdefineNgModule, Jo as ɵɵprojectionDef, Jt as Component, Nn as NgModule, O as booleanAttribute, Ro as ɵɵlistener, S as ViewChild, Sn as Input, Ua as ɵɵdefineComponent, Xi as ɵɵProvidersFeature, Xs as ɵɵviewQuery, Yi as ɵɵNgOnChangesFeature, Yo as ɵɵproperty, Zi as ɵɵadvance, aa as ɵɵattribute, ca as ɵɵclassMap, co as ɵɵelementEnd, da as ɵɵconditional, f as HostAttributeToken, fn as ElementRef, io as ɵɵelement, la as ɵɵclassProp, lo as ɵɵelementStart, ls as ɵɵreference, no as ɵɵdomProperty, pa as ɵɵconditionalCreate, pr as ViewEncapsulation, qo as ɵɵprojection, r as ChangeDetectorRef, rt as numberAttribute, ss as ɵɵqueryRefresh, zn as Output, zo as ɵɵloadQuery } from "./core-DpE0Bu0A.js";
 import { n as NG_VALIDATORS, r as NG_VALUE_ACCESSOR } from "./forms-D_qTf2MM.js";
-import { t as _CdkPrivateStyleLoader } from "./_style-loader-chunk-Ys6Vz52w.js";
-import { r as FocusMonitor } from "./a11y-BhSY2Gwq.js";
-import "./private-BgnZ_CQo.js";
+import { t as _CdkPrivateStyleLoader } from "./_style-loader-chunk-Fu2li2SB.js";
+import { r as FocusMonitor } from "./a11y-CV-NyPtL.js";
+import "./private-BxLTw5_H.js";
 import { t as FORM_FIELD } from "./signals-BkWUlKWo.js";
-import { t as _IdGenerator } from "./_id-generator-chunk-ngmWyetU.js";
-import { t as _animationsDisabled } from "./_animation-chunk-q3l5j1EA.js";
-import { t as _StructuralStylesLoader } from "./_structural-styles-chunk-p8HIm79N.js";
-import { n as MatRipple } from "./_ripple-chunk-iZuaX-ng.js";
-import { t as BidiModule } from "./bidi-BldOeCYw.js";
-import "./platform-CxEApJTb.js";
-// ../../node_modules/.pnpm/@angular+material@22.2.7_4f6723b46a482e1b97215c4fcb9843d2/node_modules/@angular/material/fesm2022/_internal-form-field-chunk.mjs
+import { t as _IdGenerator } from "./_id-generator-chunk-DoK04gJ-.js";
+import { t as _animationsDisabled } from "./_animation-chunk-CQDY1069.js";
+import { t as _StructuralStylesLoader } from "./_structural-styles-chunk-DdnSo6dN.js";
+import { n as MatRipple } from "./_ripple-chunk-rLbDpOPf.js";
+import { t as BidiModule } from "./bidi-Db2iwmE0.js";
+import "./platform-B_H4jB6r.js";
+// node_modules/@angular/material/fesm2022/_internal-form-field-chunk.mjs
 var _MatInternalFormField = class _MatInternalFormField {
 	labelPosition = "after";
 	static ɵfac = function _MatInternalFormField_Factory(__ngFactoryType__) {
@@ -67,7 +67,7 @@ var _MatInternalFormField = class _MatInternalFormField {
 		args: [{ required: true }]
 	}] });
 })();
-// ../../node_modules/.pnpm/@angular+material@22.2.7_4f6723b46a482e1b97215c4fcb9843d2/node_modules/@angular/material/fesm2022/slide-toggle.mjs
+// node_modules/@angular/material/fesm2022/slide-toggle.mjs
 var MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS = new InjectionToken("mat-slide-toggle-default-options", {
 	providedIn: "root",
 	factory: () => ({

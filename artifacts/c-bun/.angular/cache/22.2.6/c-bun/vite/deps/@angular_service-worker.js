@@ -1,7 +1,7 @@
 import { Pn as formatRuntimeError, U as InjectionToken, W as Injector, et as NgZone, la as ɵɵdefineInjectable, lt as RuntimeError, pa as ɵɵinject, si as makeEnvironmentProviders, ua as ɵɵdefineInjector, wr as inject } from "./_resource-chunk-CQPGmI6B.js";
 import { Ai as setClassMetadata, Ga as ɵɵdefineNgModule, Nn as NgModule, Vt as ApplicationRef, pi as provideAppInitializer, xn as Injectable } from "./core-DpE0Bu0A.js";
 import { $t as NEVER, Ct as take, Qn as Subject, Xt as filter, b as switchMap, rr as Observable, vn as map } from "./esm5-DNszYheg.js";
-// ../../node_modules/.pnpm/@angular+service-worker@22.2.5_@angular+core@22.2.5_@angular+compiler@22.2.5_rxjs@7.8.2_zone.js@0.16.3__rxjs@7.8.2/node_modules/@angular/service-worker/fesm2022/service-worker.mjs
+// node_modules/@angular/service-worker/fesm2022/service-worker.mjs
 /**
 * @license Angular v22.2.5
 * (c) 2010-2026 Google LLC. https://angular.dev/

@@ -1,19 +1,19 @@
-import { _ as coerceBooleanProperty, c as MatFormField, d as MatLabel, f as MatPrefix, l as MatFormFieldControl, p as MatSuffix, r as MAT_FORM_FIELD, s as MatError, t as MatFormFieldModule, u as MatHint } from "./form-field-C16iQHgJ.js";
-import { t as getSupportedInputTypes } from "./platform-CxEApJTb.js";
+import { _ as coerceBooleanProperty, c as MatFormField, d as MatLabel, f as MatPrefix, l as MatFormFieldControl, p as MatSuffix, r as MAT_FORM_FIELD, s as MatError, t as MatFormFieldModule, u as MatHint } from "./form-field-CSz9HW4x.js";
+import { t as getSupportedInputTypes } from "./platform-B_H4jB6r.js";
 import { AutofillMonitor, TextFieldModule } from "./@angular_cdk_text-field.js";
 import { Ai as setClassMetadata, Ga as ɵɵdefineNgModule, Nn as NgModule, O as booleanAttribute, Ro as ɵɵlistener, Sn as Input, Wa as ɵɵdefineDirective, Wn as Renderer2, Xi as ɵɵProvidersFeature, Yi as ɵɵNgOnChangesFeature, Zn as Service, aa as ɵɵattribute, fn as ElementRef, la as ɵɵclassProp, no as ɵɵdomProperty, qa as ɵɵdefineService, un as Directive } from "./core-DpE0Bu0A.js";
-import { t as Platform } from "./_platform-chunk-0WCaIQ9Q.js";
-import "./a11y-BhSY2Gwq.js";
+import { t as Platform } from "./_platform-chunk-xxXUEZK0.js";
+import "./a11y-CV-NyPtL.js";
 import { a as NgForm, i as NgControl, o as Validators, t as FormGroupDirective } from "./forms-D_qTf2MM.js";
 import { t as FORM_FIELD } from "./signals-BkWUlKWo.js";
-import { t as _IdGenerator } from "./_id-generator-chunk-ngmWyetU.js";
+import { t as _IdGenerator } from "./_id-generator-chunk-DoK04gJ-.js";
 import { Qn as Subject } from "./esm5-DNszYheg.js";
 import { Jr as isSignal, U as InjectionToken, et as NgZone, ua as ɵɵdefineInjector, wr as inject, xn as effect } from "./_resource-chunk-CQPGmI6B.js";
-import { t as BidiModule } from "./bidi-BldOeCYw.js";
-import "./_animation-chunk-q3l5j1EA.js";
-// ../../node_modules/.pnpm/@angular+material@22.2.7_4f6723b46a482e1b97215c4fcb9843d2/node_modules/@angular/material/fesm2022/_input-value-accessor-chunk.mjs
+import { t as BidiModule } from "./bidi-Db2iwmE0.js";
+import "./_animation-chunk-CQDY1069.js";
+// node_modules/@angular/material/fesm2022/_input-value-accessor-chunk.mjs
 var MAT_INPUT_VALUE_ACCESSOR = new InjectionToken("MAT_INPUT_VALUE_ACCESSOR");
-// ../../node_modules/.pnpm/@angular+material@22.2.7_4f6723b46a482e1b97215c4fcb9843d2/node_modules/@angular/material/fesm2022/_error-options-chunk.mjs
+// node_modules/@angular/material/fesm2022/_error-options-chunk.mjs
 var ShowOnDirtyErrorStateMatcher = class ShowOnDirtyErrorStateMatcher {
 	isErrorState(control, form) {
 		return !!(control && control.invalid && (control.dirty || form && form.submitted));
@@ -60,7 +60,7 @@ var ErrorStateMatcher = class ErrorStateMatcher {
 (() => {
 	(typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ErrorStateMatcher, [{ type: Service }], null, null);
 })();
-// ../../node_modules/.pnpm/@angular+material@22.2.7_4f6723b46a482e1b97215c4fcb9843d2/node_modules/@angular/material/fesm2022/_error-state-chunk.mjs
+// node_modules/@angular/material/fesm2022/_error-state-chunk.mjs
 var _ErrorStateTracker = class {
 	_defaultMatcher;
 	_parentFormGroup;
@@ -99,7 +99,7 @@ var _ErrorStateTracker = class {
 		return matcher?.isErrorState(control, parent) ?? false;
 	}
 };
-// ../../node_modules/.pnpm/@angular+material@22.2.7_4f6723b46a482e1b97215c4fcb9843d2/node_modules/@angular/material/fesm2022/input.mjs
+// node_modules/@angular/material/fesm2022/input.mjs
 function getMatInputUnsupportedTypeError(type) {
 	return Error(`Input type "${type}" isn't supported by matInput.`);
 }

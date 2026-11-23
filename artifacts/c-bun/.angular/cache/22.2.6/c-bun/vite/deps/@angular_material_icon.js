@@ -1,10 +1,10 @@
 import { Ai as setClassMetadata, Ga as ɵɵdefineNgModule, Jo as ɵɵprojectionDef, Jt as Component, Nn as NgModule, O as booleanAttribute, Rn as Optional, Sn as Input, Ua as ɵɵdefineComponent, aa as ɵɵattribute, bn as Inject, ca as ɵɵclassMap, f as HostAttributeToken, fn as ElementRef, la as ɵɵclassProp, pr as ViewEncapsulation, qo as ɵɵprojection, xn as Injectable } from "./core-DpE0Bu0A.js";
 import { An as throwError, Ct as take, Lt as catchError, O as share, cn as forkJoin, jn as of, m as tap, ot as finalize, ur as Subscription, vn as map } from "./esm5-DNszYheg.js";
-import { r as trustedHTMLFromString } from "./private-BgnZ_CQo.js";
+import { r as trustedHTMLFromString } from "./private-BxLTw5_H.js";
 import { r as DomSanitizer, v as HttpClient } from "./platform-browser-cgi4ILJr.js";
 import { F as ErrorHandler, T as DOCUMENT, U as InjectionToken, dt as SecurityContext, la as ɵɵdefineInjectable, pa as ɵɵinject, ua as ɵɵdefineInjector, wr as inject } from "./_resource-chunk-CQPGmI6B.js";
-import { t as BidiModule } from "./bidi-BldOeCYw.js";
-// ../../node_modules/.pnpm/@angular+material@22.2.7_4f6723b46a482e1b97215c4fcb9843d2/node_modules/@angular/material/fesm2022/_icon-registry-chunk.mjs
+import { t as BidiModule } from "./bidi-Db2iwmE0.js";
+// node_modules/@angular/material/fesm2022/_icon-registry-chunk.mjs
 function getMatIconNameNotFoundError(iconName) {
 	return Error(`Unable to find icon with the name "${iconName}"`);
 }
@@ -289,7 +289,7 @@ function inferDefaultFontSetClass(document) {
 	});
 	return [materialSymbolsVariation && !hasLegacyMaterialIcons ? `material-symbols-${materialSymbolsVariation}` : "material-icons", "mat-ligature-font"];
 }
-// ../../node_modules/.pnpm/@angular+material@22.2.7_4f6723b46a482e1b97215c4fcb9843d2/node_modules/@angular/material/fesm2022/icon.mjs
+// node_modules/@angular/material/fesm2022/icon.mjs
 var MAT_ICON_DEFAULT_OPTIONS = new InjectionToken("MAT_ICON_DEFAULT_OPTIONS");
 var MAT_ICON_LOCATION = new InjectionToken("mat-icon-location", {
 	providedIn: "root",

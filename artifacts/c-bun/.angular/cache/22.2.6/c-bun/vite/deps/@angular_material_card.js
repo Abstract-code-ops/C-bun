@@ -1,7 +1,7 @@
 import { U as InjectionToken, ua as ɵɵdefineInjector, wr as inject } from "./_resource-chunk-CQPGmI6B.js";
 import { $a as ɵɵdomElementEnd, Ai as setClassMetadata, Ga as ɵɵdefineNgModule, Jo as ɵɵprojectionDef, Jt as Component, Nn as NgModule, Sn as Input, Ua as ɵɵdefineComponent, Wa as ɵɵdefineDirective, eo as ɵɵdomElementStart, la as ɵɵclassProp, pr as ViewEncapsulation, qo as ɵɵprojection, un as Directive } from "./core-DpE0Bu0A.js";
-import { t as BidiModule } from "./bidi-BldOeCYw.js";
-// ../../node_modules/.pnpm/@angular+material@22.2.7_4f6723b46a482e1b97215c4fcb9843d2/node_modules/@angular/material/fesm2022/card.mjs
+import { t as BidiModule } from "./bidi-Db2iwmE0.js";
+// node_modules/@angular/material/fesm2022/card.mjs
 var MAT_CARD_CONFIG = new InjectionToken("MAT_CARD_CONFIG");
 var MatCard = class MatCard {
 	appearance;

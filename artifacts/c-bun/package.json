@@ -7,7 +7,8 @@
     "dev": "NG_CLI_ANALYTICS=false ng serve --host 0.0.0.0 --port $PORT",
     "build": "NG_CLI_ANALYTICS=false ng build --configuration production",
     "typecheck": "NG_CLI_ANALYTICS=false ng build --configuration development",
-    "preview": "NG_CLI_ANALYTICS=false ng build --configuration production && pnpm dlx http-server dist/public -p $PORT -a 0.0.0.0 -c-1"
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@angular/animations": "22.2.5",
@@ -31,6 +32,7 @@
     "@angular/build": "22.2.6",
     "@angular/cli": "22.2.6",
     "@angular/compiler-cli": "22.2.5",
-    "typescript": "6.0.3"
+    "typescript": "6.0.3",
+    "wrangler": "^4.166.0"
   }
 }

@@ -1,29 +1,29 @@
 import { Ai as setClassMetadata, Bo as ɵɵnextContext, Fs as ɵɵtextInterpolate1, Ga as ɵɵdefineNgModule, Gn as RendererFactory2, Gt as ChangeDetectionStrategy, Ji as ɵɵInheritDefinitionFeature, Jt as Component, Nn as NgModule, Ns as ɵɵtext, O as booleanAttribute, Ro as ɵɵlistener, S as ViewChild, Sn as Input, Ua as ɵɵdefineComponent, Vt as ApplicationRef, Wa as ɵɵdefineDirective, Wn as Renderer2, Xs as ɵɵviewQuery, Yi as ɵɵNgOnChangesFeature, Zi as ɵɵadvance, Zn as Service, aa as ɵɵattribute, co as ɵɵelementEnd, da as ɵɵconditional, fn as ElementRef, fr as ViewContainerRef, go as ɵɵgetCurrentView, io as ɵɵelement, ir as TemplateRef, js as ɵɵtemplate, la as ɵɵclassProp, lo as ɵɵelementStart, pa as ɵɵconditionalCreate, pr as ViewEncapsulation, qa as ɵɵdefineService, r as ChangeDetectorRef, ss as ɵɵqueryRefresh, un as Directive, vr as afterNextRender, zn as Output, zo as ɵɵloadQuery } from "./core-DpE0Bu0A.js";
-import { a as _getEventTarget, t as LiveAnnouncer } from "./a11y-BhSY2Gwq.js";
-import { a as coerceArray, i as BreakpointObserver, r as Breakpoints, t as _animationsDisabled } from "./_animation-chunk-q3l5j1EA.js";
+import { a as _getEventTarget, t as LiveAnnouncer } from "./a11y-CV-NyPtL.js";
+import { a as coerceArray, i as BreakpointObserver, r as Breakpoints, t as _animationsDisabled } from "./_animation-chunk-CQDY1069.js";
 import { Nt as Location } from "./common-i0MqcpSt.js";
-import { t as Platform } from "./_platform-chunk-0WCaIQ9Q.js";
-import { t as _CdkPrivateStyleLoader } from "./_style-loader-chunk-Ys6Vz52w.js";
+import { t as Platform } from "./_platform-chunk-xxXUEZK0.js";
+import { t as _CdkPrivateStyleLoader } from "./_style-loader-chunk-Fu2li2SB.js";
 import { Qn as Subject, Xt as filter, g as takeUntil, h as takeWhile, jn as of, ur as Subscription } from "./esm5-DNszYheg.js";
-import { i as ViewportRuler, l as supportsScrollBehavior, n as ScrollDispatcher, r as ScrollingModule } from "./scrolling-c3zQCZp8.js";
-import { t as _IdGenerator } from "./_id-generator-chunk-ngmWyetU.js";
-import { i as Directionality, t as BidiModule } from "./bidi-BldOeCYw.js";
-import { a as PortalModule, i as DomPortalOutlet, n as CdkPortalOutlet, o as TemplatePortal, r as ComponentPortal, t as BasePortalOutlet } from "./portal-uy4Z5pUT.js";
-import { t as hasModifierKey } from "./keycodes-BPdrjHUb.js";
+import { i as ViewportRuler, l as supportsScrollBehavior, n as ScrollDispatcher, r as ScrollingModule } from "./scrolling-BTrXTdG6.js";
+import { t as _IdGenerator } from "./_id-generator-chunk-DoK04gJ-.js";
+import { i as Directionality, t as BidiModule } from "./bidi-Db2iwmE0.js";
+import { a as PortalModule, i as DomPortalOutlet, n as CdkPortalOutlet, o as TemplatePortal, r as ComponentPortal, t as BasePortalOutlet } from "./portal-CC5CkI2W.js";
+import { t as hasModifierKey } from "./keycodes-DL40huTC.js";
 import { I as EventEmitter, P as EnvironmentInjector, T as DOCUMENT, U as InjectionToken, Ui as signal, W as Injector, _ as untracked, et as NgZone, ua as ɵɵdefineInjector, v as ANIMATION_MODULE_TYPE, va as ɵɵresetView, wr as inject, ya as ɵɵrestoreView } from "./_resource-chunk-CQPGmI6B.js";
-import { i as MatButtonModule, r as MatButton } from "./button-UJvlUK0u.js";
-import "./platform-CxEApJTb.js";
-import "./private-BgnZ_CQo.js";
-// ../../node_modules/.pnpm/@angular+cdk@22.2.7_31575fdcd76c2461da240d509d191da3/node_modules/@angular/cdk/fesm2022/_test-environment-chunk.mjs
+import { i as MatButtonModule, r as MatButton } from "./button-C8pyJgGT.js";
+import "./platform-B_H4jB6r.js";
+import "./private-BxLTw5_H.js";
+// node_modules/@angular/cdk/fesm2022/_test-environment-chunk.mjs
 function _isTestEnvironment() {
 	return typeof __karma__ !== "undefined" && !!__karma__ || typeof jasmine !== "undefined" && !!jasmine || typeof jest !== "undefined" && !!jest || typeof Mocha !== "undefined" && !!Mocha;
 }
-// ../../node_modules/.pnpm/@angular+cdk@22.2.7_31575fdcd76c2461da240d509d191da3/node_modules/@angular/cdk/fesm2022/_css-pixel-value-chunk.mjs
+// node_modules/@angular/cdk/fesm2022/_css-pixel-value-chunk.mjs
 function coerceCssPixelValue(value) {
 	if (value == null) return "";
 	return typeof value === "string" ? value : `${value}px`;
 }
-// ../../node_modules/.pnpm/@angular+cdk@22.2.7_31575fdcd76c2461da240d509d191da3/node_modules/@angular/cdk/fesm2022/_overlay-module-chunk.mjs
+// node_modules/@angular/cdk/fesm2022/_overlay-module-chunk.mjs
 var scrollBehaviorSupported = supportsScrollBehavior();
 function createBlockScrollStrategy(injector) {
 	return new BlockScrollStrategy(injector.get(ViewportRuler), injector.get(DOCUMENT));
@@ -2262,7 +2262,7 @@ var OverlayModule = class OverlayModule {
 		}]
 	}], null, null);
 })();
-// ../../node_modules/.pnpm/@angular+cdk@22.2.7_31575fdcd76c2461da240d509d191da3/node_modules/@angular/cdk/fesm2022/overlay.mjs
+// node_modules/@angular/cdk/fesm2022/overlay.mjs
 var FullscreenOverlayContainer = class FullscreenOverlayContainer extends OverlayContainer {
 	_renderer = inject(RendererFactory2).createRenderer(null, null);
 	_fullScreenEventName;
@@ -2308,7 +2308,7 @@ var FullscreenOverlayContainer = class FullscreenOverlayContainer extends Overla
 (() => {
 	(typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(FullscreenOverlayContainer, [{ type: Service }], null, null);
 })();
-// ../../node_modules/.pnpm/@angular+material@22.2.7_4f6723b46a482e1b97215c4fcb9843d2/node_modules/@angular/material/fesm2022/snack-bar.mjs
+// node_modules/@angular/material/fesm2022/snack-bar.mjs
 var MAX_TIMEOUT = Math.pow(2, 31) - 1;
 var MatSnackBarRef = class {
 	_overlayRef;

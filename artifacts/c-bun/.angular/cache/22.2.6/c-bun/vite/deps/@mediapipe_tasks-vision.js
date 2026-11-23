@@ -1,4 +1,4 @@
-// ../../node_modules/.pnpm/@mediapipe+tasks-vision@1.2.3/node_modules/@mediapipe/tasks-vision/vision_bundle.mjs
+// node_modules/@mediapipe/tasks-vision/vision_bundle.mjs
 var t = "undefined" != typeof self ? self : {};
 function e(e, r) {
 	e = e.split(".");
